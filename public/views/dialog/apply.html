@@ -1,0 +1,46 @@
+<form method="post" name="userForm" id="userForm">
+    <!-- 지원하기 -->
+    <md-dialog style="width:450px;" class="popup">
+        <md-toolbar>
+            <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+                <h2 class="pop_title">지원하기</h2>
+                <md-button aria-label="닫기" ng-click="vm.cancel()"><img src="/img/popup/close.png"/></md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content layout="column">
+
+            <div class="input_form nob" layout="column">
+                <p style="color: red" class="text-center">{{ vm.error }}</p>
+                <md-input-container md-no-float flex="15" layout="column">
+                    <md-select name="RM_TYPE" ng-model="c.RM_TYPE" required="" aria-label="직군"
+                               placeholder="직군">
+                        <!--                        <md-option ng-repeat="d in vm.diets" value="{{::d.CD}}">{{::d.TITLE}}</md-option>-->
+                        <md-option value="01">기획자</md-option>
+                        <md-option value="02">개발자</md-option>
+                        <md-option value="03">원화가</md-option>
+                        <md-option value="04">작곡가</md-option>
+                        <md-option value="05">작가</md-option>
+                        <md-option value="06">크리에이터</md-option>
+                        <md-option value="07">기타</md-option>
+                    </md-select>
+                    <div ng-messages="facilityForm.RM_TYPE.$error" ng-if="vm.showError">
+                        <div ng-message="required">직군을 선택해 주세요.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block" md-no-float >
+                    <textarea name="ET_CONTENT" ng-model="vm.data.ET_CONTENT" rows="6" ng-maxlength="1000" placeholder="지원내용"></textarea>
+                    <div ng-messages="inputForm.ET_CONTENT.$error" ng-if="vm.showError">
+                        <div ng-message="required">지원내용을 입력해 주세요.</div>
+                        <div ng-message="ng-maxlength">지원내용은 1000자 이내로 입력해 주세요.</div>
+                    </div>
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="column" class="popup_bottom">
+            <md-button ng-click="vm.confirm()" ng-disabled='userForm.$invalid'
+                       class="md-raised md-button md-ink-ripple">
+                전송
+            </md-button>
+        </md-dialog-actions>
+    </md-dialog>
+</form>

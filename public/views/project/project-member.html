@@ -1,0 +1,63 @@
+<div class="project_top team">
+<!--    <img src="/img/main/info_bg.png" alt="indiens"  />-->
+    <img ng-src="{{vm.user.PJT_LOGO}}" alt="indiens"/>
+    <div>
+        <h2>{{vm.user.PJT_NAME}}</h2>
+    </div>
+</div>
+<div class="team_update">
+    <div class="team_member">
+        <div layout="row">
+            <p flex="60" class="member" layout="row" layout-align="space-between center">
+                <span flex layout="row" layout-align="space-between center">
+                    <span>총괄 프로듀서</span>
+                    <span class="name">{{vm.user.MEM_NAME}}</span>
+                </span>
+            </p>
+            <p flex>
+
+            </p>
+        </div>
+        <div layout="row" ng-repeat="job in vm.jobs">
+            <p flex="60" class="member" layout="row" layout-align="space-between center">
+                <span flex layout="row" layout-align="space-between center">
+                    <span>{{job.JOB_TYPE}}</span>
+                    <span class="name" ng-if="job.MEM_NAME">{{job.MEM_NAME}}</span>
+                    <span class="name" ng-if="!job.MEM_NAME">공석</span>
+                </span>
+                <md-button aria-label="변경" ng-click="vm.update(job.JOB_ID)" class="md-primary">변경</md-button>
+            </p>
+            <p flex>
+                <md-checkbox ng-model="job.JOB_VIEW_YN" aria-label="액션" ng-true-value="'N'" ng-false-value="'Y'">프로젝트 화면에 해당 직군 표시하지 않기</md-checkbox>
+            </p>
+        </div>
+       <!-- <div layout="row">
+            <p flex="60" class="member" layout="row" layout-align="space-between center">
+                <span flex layout="row" layout-align="space-between center">
+                    <span>원화가</span>
+                    <span class="name">김현설</span>
+                </span>
+                <md-button aria-label="변경" ng-click="vm.update()" class="md-primary">변경</md-button>
+            </p>
+            <p flex>
+                <md-checkbox ng-model="vm.data.PJ" aria-label="액션" value="1">프로젝트 화면에 해당 직군 표시하지 않기</md-checkbox>
+            </p>
+        </div>
+        <div layout="row">
+            <p flex="60" class="member" layout="row" layout-align="space-between center">
+                <span flex layout="row" layout-align="space-between center">
+                    <span>작곡가</span>
+                    <span class="name">공석</span>
+                </span>
+                <md-button aria-label="변경" ng-click="vm.update()" class="md-primary">변경</md-button>
+            </p>
+            <p flex>
+                <md-checkbox ng-model="vm.data.PJ" aria-label="액션" value="1">프로젝트 화면에 해당 직군 표시하지 않기</md-checkbox>
+            </p>
+        </div>-->
+    </div>
+</div>
+<div layout="row" class="join_btn">
+    <md-button flex="20" class="gray" aria-label="취소" ng-click="vm.cancel()">취소</md-button>
+    <md-button flex aria-label="저장" ng-click="vm.save()">저장</md-button>
+</div>

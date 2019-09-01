@@ -1,0 +1,28 @@
+<form method="post" name="userForm" id="userForm">
+    <md-dialog style="width:450px;" class="popup">
+        <md-toolbar>
+            <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+                <h2 class="pop_title">답변 작성</h2>
+                <md-button aria-label="닫기" ng-click="vm.cancel()"><img src="/img/popup/close.png"/></md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content layout="column">
+            <div class="input_form nob" layout="column">
+                <p style="color: red" class="text-center">{{ vm.error }}</p>
+                <md-input-container class="md-block" md-no-float >
+                    <textarea name="MSG_MESSAGE" ng-model="vm.user.MSG_MESSAGE" rows="8" ng-maxlength="1000" placeholder="쪽지내용"></textarea>
+                    <div ng-messages="userForm.MSG_MESSAGE.$error" ng-if="vm.showError">
+                        <div ng-message="required">쪽지내용을 입력해 주세요.</div>
+                        <div ng-message="ng-maxlength">쪽지내용은 1000자 이내로 입력해 주세요.</div>
+                    </div>
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="column" class="popup_bottom">
+            <md-button ng-click="vm.confirm()" ng-disabled='loginForm.$invalid'
+                       class="md-raised md-button md-ink-ripple">
+                전송
+            </md-button>
+        </md-dialog-actions>
+    </md-dialog>
+</form>

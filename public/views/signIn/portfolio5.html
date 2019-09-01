@@ -1,0 +1,21 @@
+<!-- 기타 -->
+<div class="link">
+    <md-input-container class="md-block" md-no-float flex="35">
+        <label>직업</label>
+        <input required="" name="MEM_JOB" maxlength="50" ng-model="vm.user.MEM_JOB" type="text" placeholder="직업" autofocus/>
+        <div ng-messages="userForm.MEM_JOB.$error" ng-if="vm.showError">
+            <div class="denger" ng-message="required">직업을 입력해 주세요.</div>
+            <div ng-message="ng-maxlength">직업은 50자 이내로 입력해 주세요.</div>
+        </div>
+    </md-input-container>
+</div>
+<div class="link">
+    <md-input-container class="md-block" md-no-float>
+        <label>창작물 링크</label>
+        <input required="" name="MEM_LINK" maxlength="100" ng-model="vm.user.MEM_LINK" type="text" placeholder="창작물 링크" autofocus/>
+        <div ng-messages="userForm.MEM_LINK.$error" ng-if="vm.showError">
+            <div class="denger" ng-message="required">링크를 입력해 주세요.</div>
+            <div ng-message="ng-maxlength">링크는 100자 이내로 입력해 주세요.</div>
+        </div>
+    </md-input-container>
+</div>

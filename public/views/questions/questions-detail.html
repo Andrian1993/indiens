@@ -1,0 +1,25 @@
+<div class="container sub">
+    <div class="sub_title_area">
+        <h3>문의하기</h3>
+    </div>
+    <div class="board_area">
+        <div class="board_top">
+            <h4>{{vm.question.QUE_QS_TITLE}}</h4>
+            <p>{{vm.question.QUE_QS_DT | date:"yyyy-MM-dd"}}</p>
+        </div>
+        <div class="board_body">{{vm.question.QUE_QS_CONT}}
+        </div>
+        <div class="board_top answer" ng-if="vm.question.QUE_AN_DT">
+            <h4>{{vm.question.QUE_AN_TITLE}}</h4>
+            <p>{{vm.question.QUE_AN_DT | date:"yyyy-MM-dd"}}</p>
+        </div>
+        <div class="board_body" ng-if="vm.question.QUE_AN_DT">{{vm.question.QUE_AN_CONT}}
+        </div>
+        <div class="body_bottom_btn">
+            <md-button aria-label="목록" ng-click="vm.cancel()" class="board_btn left">목록</md-button>
+            <md-button ng-show="$root.currentUser.MEM_ADMIN_YN == 'Y' && !vm.question.QUE_AN_DT"  aria-label="답변" ng-click="vm.edit()" class="board_btn">답변</md-button>
+            <md-button aria-label="삭제" ng-click="vm.delete()" class="board_btn">삭제</md-button>
+            <md-button ng-show="$root.currentUser.MEM_ADMIN_YN == 'N' || vm.question.QUE_AN_DT" aria-label="수정" ng-click="vm.edit()" class="board_btn">수정</md-button>
+        </div>
+    </div>
+</div>

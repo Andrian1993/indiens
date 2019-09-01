@@ -1,0 +1,66 @@
+<div class="container sub">
+<div class="sub_title_area">
+    <h3>문의하기</h3>
+</div>
+<form method="post" name="questionForm" id="userForm">
+
+
+        <!-- 선생님 계정정보 -->
+        <div class="input_area project qa" ng-if="$root.currentUser.MEM_ADMIN_YN == 'N'">
+            <div layout="row">
+                <md-input-container class="md-block notice_input md-input-has-value" flex>
+                    <label class="input_label">문의제목</label>
+                    <input name="QUE_QS_TITLE" type="text" ng-model="vm.question.QUE_QS_TITLE" required="" autofocus
+                           placeholder="문의제목" md-maxlength="100">
+                    <div ng-messages="questionForm.QUE_QS_TITLE.$error" ng-if="vm.showError">
+                        <div ng-message="required">문의제목을 입력해 주세요.</div>
+                        <div ng-message="md-maxlength">문의제목은 100자 이내로 입력해 주세요.</div>
+                    </div>
+                </md-input-container>
+            </div>
+            <div layout="row">
+                <md-input-container class="md-block md-input-has-value" flex md-no-float >
+                    <label class="input_label">문의내용</label>
+                    <textarea name="QUE_QS_CONT" ng-model="vm.question.QUE_QS_CONT" required="" rows="10" md-maxlength="1000" placeholder="문의내용"></textarea>
+                    <div ng-messages="questionForm.QUE_QS_CONT.$error" ng-if="vm.showError">
+                        <div ng-message="required">문의내용을 입력해 주세요.</div>
+                        <div ng-message="md-maxlength">문의내용은 1000자 이내로 입력해 주세요.</div>
+                    </div>
+                </md-input-container>
+            </div>
+
+        </div>
+
+
+       <!-- 답변 부분-->
+        <div class="input_area project qa" ng-if="$root.currentUser.MEM_ADMIN_YN == 'Y'">
+            <div layout="row">
+                <md-input-container class="md-block notice_input md-input-has-value" flex md-no-float>
+                    <label class="input_label">답변제목</label>
+                    <input name="QUE_AN_TITLE" type="text" ng-model="vm.question.QUE_AN_TITLE" required="" autofocus
+                           placeholder="답변제목" md-maxlength="100">
+                    <div ng-messages="questionForm.QUE_AN_TITLE.$error" ng-if="vm.showError">
+                        <div ng-message="required">답변제목을 입력해 주세요.</div>
+                        <div ng-message="md-maxlength">답변제목은 100자 이내로 입력해 주세요.</div>
+                    </div>
+                </md-input-container>
+            </div>
+            <div layout="row">
+                <md-input-container class="md-block md-input-has-value" flex="100" md-no-float>
+                    <label class="input_label">답변내용</label>
+                    <textarea name="QUE_AN_CONT" ng-model="vm.question.QUE_AN_CONT" required=""  rows="10" md-maxlength="1000" placeholder="답변내용"></textarea>
+                    <div ng-messages="questionForm.QUE_AN_CONT.$error" ng-if="vm.showError">
+                        <div ng-message="required">답변내용을 입력해 주세요.</div>
+                        <div ng-message="md-maxlength">답변내용은 1000자 이내로 입력해 주세요.</div>
+                    </div>
+                </md-input-container>
+            </div>
+        </div>
+
+        <div layout="row" class="join_btn">
+            <md-button flex="20" class="gray" aria-label="취소" ng-click="vm.cancel()">취소</md-button>
+            <md-button flex aria-label="저장" ng-click="vm.save()">저장</md-button>
+        </div>
+
+</form>
+</div>

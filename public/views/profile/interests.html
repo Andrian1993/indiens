@@ -1,0 +1,175 @@
+<h2 class="my_page_title">관심 프로젝트</h2>
+<div class="project_list">
+    <md-content>
+        <md-card ng-repeat="f in vm.fabs">
+            <img ng-src="{{f.PJT_LOGO}}" ng-click="vm.detail(f.PJT_ID)" class="md-card-image" alt=""/>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">{{f.PJT_NAME}}</span>
+                    <span>{{f.PJT_DESC}}</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-icon-button md-accent" aria-label="Favorite">
+                    <md-icon md-svg-icon="/img/svg/favorite.svg" ng-click="vm.delete(f.FAB_ID)"></md-icon>
+                </md-button>
+            </md-card-actions>
+        </md-card>
+        <!--<md-card>
+            <img src="/img/ex/ptoject_photo2.png" class="md-card-image" alt="project"/>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Anthem™ Legion of Dawn 에디션 Anthem™</span>
+                    <span>Legion of Dawn 에디션 패키지</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-icon-button md-accent" aria-label="Favorite">
+                    <md-icon md-svg-icon="/img/svg/favorite.svg"></md-icon>
+                </md-button>
+            </md-card-actions>
+        </md-card>
+        <md-card>
+            <img src="/img/ex/ptoject_photo3.png" class="md-card-image" alt="project"/>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Anthem™ Legion of Dawn 에디션 Anthem™</span>
+                    <span>Legion of Dawn 에디션 패키지</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-icon-button md-accent" aria-label="Favorite">
+                    <md-icon md-svg-icon="/img/svg/favorite.svg"></md-icon>
+                </md-button>
+            </md-card-actions>
+        </md-card>
+        <md-card>
+            <img src="/img/ex/ptoject_photo1.png" class="md-card-image" alt="project"/>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Anthem™ Legion of Dawn 에디션 Anthem™</span>
+                    <span>Legion of Dawn 에디션 패키지</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-icon-button md-accent" aria-label="Favorite">
+                    <md-icon md-svg-icon="/img/svg/favorite.svg"></md-icon>
+                </md-button>
+            </md-card-actions>
+        </md-card>
+        <md-card>
+            <img src="/img/ex/ptoject_photo2.png" class="md-card-image" alt="project"/>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Anthem™ Legion of Dawn 에디션 Anthem™</span>
+                    <span>Legion of Dawn 에디션 패키지</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-icon-button md-accent" aria-label="Favorite">
+                    <md-icon md-svg-icon="/img/svg/favorite.svg"></md-icon>
+                </md-button>
+            </md-card-actions>
+        </md-card>
+        <md-card>
+            <img src="/img/ex/ptoject_photo3.png" class="md-card-image" alt="project"/>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Anthem™ Legion of Dawn 에디션 Anthem™</span>
+                    <span>Legion of Dawn 에디션 패키지</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-icon-button md-accent" aria-label="Favorite">
+                    <md-icon md-svg-icon="/img/svg/favorite.svg"></md-icon>
+                </md-button>
+            </md-card-actions>
+        </md-card>
+        <md-card>
+            <img src="/img/ex/ptoject_photo1.png" class="md-card-image" alt="project"/>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Anthem™ Legion of Dawn 에디션 Anthem™</span>
+                    <span>Legion of Dawn 에디션 패키지</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-icon-button md-accent" aria-label="Favorite">
+                    <md-icon md-svg-icon="/img/svg/favorite.svg"></md-icon>
+                </md-button>
+            </md-card-actions>
+        </md-card>
+        <md-card>
+            <img src="/img/ex/ptoject_photo2.png" class="md-card-image" alt="project"/>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Anthem™ Legion of Dawn 에디션 Anthem™</span>
+                    <span>Legion of Dawn 에디션 패키지</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-icon-button md-accent" aria-label="Favorite">
+                    <md-icon md-svg-icon="/img/svg/favorite.svg"></md-icon>
+                </md-button>
+            </md-card-actions>
+        </md-card>
+        <md-card>
+            <img src="/img/ex/ptoject_photo3.png" class="md-card-image" alt="project"/>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Anthem™ Legion of Dawn 에디션 Anthem™</span>
+                    <span>Legion of Dawn 에디션 패키지</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-icon-button md-accent" aria-label="Favorite">
+                    <md-icon md-svg-icon="/img/svg/favorite.svg"></md-icon>
+                </md-button>
+            </md-card-actions>
+        </md-card>
+        <md-card>
+            <img src="/img/ex/ptoject_photo1.png" class="md-card-image" alt="project"/>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Anthem™ Legion of Dawn 에디션 Anthem™</span>
+                    <span>Legion of Dawn 에디션 패키지</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-icon-button md-accent" aria-label="Favorite">
+                    <md-icon md-svg-icon="/img/svg/favorite.svg"></md-icon>
+                </md-button>
+            </md-card-actions>
+        </md-card>
+        <md-card>
+            <img src="/img/ex/ptoject_photo2.png" class="md-card-image" alt="project"/>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Anthem™ Legion of Dawn 에디션 Anthem™</span>
+                    <span>Legion of Dawn 에디션 패키지</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-icon-button md-accent" aria-label="Favorite">
+                    <md-icon md-svg-icon="/img/svg/favorite.svg"></md-icon>
+                </md-button>
+            </md-card-actions>
+        </md-card>
+        <md-card>
+            <img src="/img/ex/ptoject_photo3.png" class="md-card-image" alt="project"/>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Anthem™ Legion of Dawn 에디션 Anthem™</span>
+                    <span>Legion of Dawn 에디션 패키지</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-icon-button md-accent" aria-label="Favorite">
+                    <md-icon md-svg-icon="/img/svg/favorite.svg"></md-icon>
+                </md-button>
+            </md-card-actions>
+        </md-card>-->
+    </md-content>
+
+    <ng-include src="'views/sub/paging.html'"></ng-include>
+</div>

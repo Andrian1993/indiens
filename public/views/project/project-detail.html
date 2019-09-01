@@ -1,0 +1,65 @@
+<div class="project_top">
+<!--    <img src="/img/main/info_bg.png" alt="indiens"  />-->
+    <img ng-src="{{vm.user.PJT_LOGO}}" alt=""/>
+    <div>
+        <h2>{{vm.user.PJT_NAME}}</h2>
+        <div class="project_top_btn" layout="row" layout-align="center" ng-if="vm.guest && vm.guest != vm.user.MEM_ID">
+            <md-button aria-label="바로 지원하기" ng-click="vm.propose(0, 0)">바로 지원하기</md-button>
+            <!--<md-button class="md-icon-button md-accent on" ng-class="vm.changeClass(vm.user.FAB_YN)" aria-label="Favorite" ng-click="vm.favorite()"><md-icon md-svg-icon="/img/svg/favorite.svg"></md-icon></md-button>-->
+            <md-button ng-class="vm.changeClass(vm.user.FAB_YN)" aria-label="Favorite" ng-click="vm.favorite()"><md-icon md-svg-icon="/img/svg/favorite.svg"></md-icon></md-button>
+        </div>
+    </div>
+</div>
+<div class="project_body">
+    <div class="info" layout="row" layout-align="space-between center">
+        <div>
+            <span>팀원모집기한 : {{vm.user.PJT_DUE_DT | date:'yyyy-MM-dd'}}</span>
+            <span>장르 : {{vm.user.PJT_TYPE}}</span>
+            <span>진행 단계 : {{vm.user.PJT_STEP}}</span>
+        </div>
+        <div ng-if="vm.guest == vm.user.MEM_ID">
+            <md-button aria-label="삭제" ng-click="vm.deleteProject()" class="md-primary">삭제</md-button>
+            <md-button aria-label="수정" ng-click="vm.update()" class="md-primary">수정</md-button>
+            <md-button aria-label="구성원 관리" ng-click="vm.memberUpdate()" class="md-primary">구성원 관리</md-button>
+        </div>
+    </div>
+   <!-- <div class="discrip">아침에 일어난 하루는 밖이 아직도 깜깜한 걸 보고 일식인줄 알고 구경을 하기 위해 TV를 튼다. 그러나 케이블 방송조차 하지 않는다.
+
+        세상은 어둠속에 갇히고. 놀란 하루는 부모님을 깨우려고 하지만 일어나지 않는다.
+        태양이 사라지고 사람들은 모두 잠들었다. 밖으로 나온 하우는 무오를 잡으러 온 흑룡장군의 군대에게 쫓긴다. 위기의 순간 하루가 가지고
+        있던 주작 팬던트가 빝을 발해 적은 소멸한다. 그리고 그 빛을 따라온 은와의 도움을 받아 가울, 동백과 재회한다..
+
+        아이들의 팬던트로 도망 온 사신왕(주작,현무,백호,청룡)은 그의 부대가 모두 봉인당하는 바람에 힘을 잃고 지상으로 도망친다...
+    </div>-->
+
+    <div class="discrip">{{vm.user.PJT_DESC}}</div>
+    <md-list class="team">
+        <md-list-item class="secondary-button-padding">
+            <p>총괄 프로듀서</p>
+            <md-button class="md-secondary" ng-click="">{{vm.user.MEM_NAME}}</md-button>
+        </md-list-item>
+        <md-list-item class="md-2-line" ng-repeat="job in vm.jobs" ng-if="job.JOB_VIEW_YN == 'Y'">
+            <div class="md-list-item-text">
+                <h3>{{job.JOB_TYPE}}<span>{{job.JOB_PAY_TYPE}} ({{job.JOB_DEV_MM}})</span></h3>
+                <p>{{job.JOB_ROLE}}</p>
+                <md-button class="md-secondary" ng-click="vm.getProfile(job.MEM_ID)" ng-if="job.MEM_NAME">{{job.MEM_NAME}}</md-button>
+                <md-button class="md-secondary" ng-click="vm.propose(job.JOB_TYPE, job.JOB_ID)" ng-if="!job.MEM_NAME">공석</md-button>
+            </div>
+        </md-list-item>
+
+        <!--<md-list-item class="md-2-line">
+            <div class="md-list-item-text">
+                <h3>작곡가<span>임금지급형 (4개월)</span></h3>
+                <p>게임 BGM, 효과음 작곡</p>
+                <md-button class="md-secondary" ng-click="">이현수</md-button>
+            </div>
+        </md-list-item>
+        <md-list-item class="md-2-line">
+            <div class="md-list-item-text">
+                <h3>원화가<span>임금지급형 (4개월)</span></h3>
+                <p>게임 컨셉 원화, 일러스트, 아이템 디자인</p>
+                <md-button class="md-secondary" ng-click="">공석</md-button>
+            </div>
+        </md-list-item>-->
+    </md-list>
+</div>

@@ -1,0 +1,25 @@
+<!-- 비밀번호 찾기 -->
+<form method="post" name="userForm" id="userForm">
+    <md-dialog style="width:450px;" class="popup">
+        <md-toolbar>
+            <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+                <h2 class="pop_title">제안 내용</h2>
+                <md-button aria-label="닫기" ng-click="vm.cancel()"><img src="/img/popup/close.png"/></md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content layout="column">
+            <div class="sug_title">
+                <h3>{{vm.user.PJT_NAME}}</h3>
+                <span>{{vm.user.PRO_DT | date:"yyyy-MM-dd"}} {{vm.user.MEM_NAME}}</span>
+            </div>
+            <p class="sug_body">{{vm.user.PRO_CONTENT}}</p>
+        </md-dialog-content>
+        <md-dialog-actions layout="column" class="popup_bottom">
+            <md-button ng-click="vm.confirm()" ng-disabled='loginForm.$invalid'
+                       class="md-raised md-button md-ink-ripple">
+                답장
+            </md-button>
+        </md-dialog-actions>
+    </md-dialog>
+</form>
+

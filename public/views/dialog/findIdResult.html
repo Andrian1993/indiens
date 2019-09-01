@@ -1,0 +1,22 @@
+    <!-- 아이디 찾기-->
+    <md-dialog style="width:450px;" class="popup">
+        <md-toolbar>
+            <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+                <h2 class="pop_title">아이디 찾기</h2>
+                <md-button aria-label="닫기" ng-click="vm.cancel()"><img src="/img/popup/close.png"/></md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content layout="column">
+            <div class="find_result">
+                {{ ::vm.user.MEM_NAME }} 님의 이메일 <br/> <p>{{ ::vm.user.MEM_EMAIL }}</p>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="column" class="popup_bottom">
+            <md-button ng-click="vm.confirm()" ng-disabled='userForm.$invalid'
+                       class="md-raised md-button md-ink-ripple">
+                확인
+            </md-button>
+        </md-dialog-actions>
+    </md-dialog>

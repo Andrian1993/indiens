@@ -1,0 +1,26 @@
+<!-- 개발자 -->
+<div class="input_area mt30" layout="column">
+    <label class="label_txt">옵션</label>
+    <div class="chk_list">
+        <md-input-container>
+            <!-- <md-checkbox ng-model="vm.data.ET_OPTION[t.CD]" aria-label="{{::t.CD_NAME}}" ng-repeat="t in vm.options" value="{{::t.CD}}">
+                 {{::t.CD_NAME}}
+                 </md-checkbox>-->
+            <md-checkbox ng-model="vm.user.MEM_LANG[1]" aria-label="JAVA" value="Java">Java</md-checkbox>
+            <md-checkbox ng-model="vm.user.MEM_LANG[2]" aria-label="C" value="C">C</md-checkbox>
+            <md-checkbox ng-model="vm.user.MEM_LANG[3]" aria-label="C++" value="C++">C++</md-checkbox>
+            <md-checkbox ng-model="vm.user.MEM_LANG[4]" aria-label="python" value="python">python</md-checkbox>
+            <md-checkbox ng-model="vm.user.MEM_LANG[5]" aria-label="기타" value="기타">기타</md-checkbox>
+            <div ng-messages="{'required': vm.optionReq}" md-auto-hide="false">
+                <div ng-message="required">옵션을 선택해 주세요.</div>
+            </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex="25">
+            <input type="text" name="MEM_LANG_ETC" ng-model="vm.user.MEM_LANG_ETC" ng-required="" ng-disabled="!vm.user.MEM_LANG[5]">
+            <div ng-messages="userForm.MEM_LANG_ETC.$error" ng-if="vm.showError">
+                <div ng-message="required">옵션 기타 내용을 입력해 주세요.</div>
+            </div>
+        </md-input-container>
+    </div>
+</div>
+

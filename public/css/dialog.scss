@@ -1,0 +1,395 @@
+@charset "UTF-8";
+$base-color: #e43a33;
+$base-color2: #d02720;
+$base-color3: #454545;
+md-dialog.md-default-theme, md-dialog {
+  border-radius: 12px !important;
+}
+md-dialog .md-actions .md-button, md-dialog md-dialog-actions .md-button {
+  border-radius: 20px;
+}
+@media (max-width: 959px){
+  .md-dialog-container {
+    height: 100% !important;
+  }
+  .md-dialog-container>form {
+    width: 100%;
+    height: 100%;
+  }
+  md-dialog.md-dialog-fullscreen {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100% !important;
+    height: 100%;
+  }
+}
+.popup {
+  .input_form {
+    padding: 30px 30px 0;
+    md-input-container textarea.md-input {
+      border-radius: 25px;
+    }
+    .md-block {
+      margin-bottom: 0;
+      margin-top: 10px;
+      &:first-child {
+        margin-top: 17px
+      }
+    }
+    &.pass{
+      padding-bottom: 20px;
+      text-align: center;
+      font-size: 11pt;
+    }
+  }
+  .login_radio {
+    margin-bottom: 26px;
+  }
+  md-toolbar{
+    &.md-default-theme:not(.md-menu-toolbar), &:not(.md-menu-toolbar) {
+      background-color: #fff;
+      color: #fff;
+      min-height: 50px;
+    }
+    .md-button:not(.md-datepicker-triangle-button) {
+      background-color: transparent;
+      min-width: 25px;
+      padding: 0;
+      margin-top: 5px;
+    }
+    .md-button.md-default-theme:not([disabled]).md-focused, .md-button:not([disabled]).md-focused, .md-button.md-default-theme:not([disabled]):hover, .md-button:not([disabled]):hover {
+      background-color: transparent;
+    }
+    .md-toolbar-tools {
+      height: 60px;
+      background-color: $base-color;
+      h2.pop_title {
+        font-size: 0.8em;
+        padding-left: 5px;
+      }
+    }
+  }
+  .md-button:not(.md-datepicker-triangle-button) {
+    background-color: $base-color;
+    color: #fff;
+    margin-right: 0;
+    border-radius: 50px;
+    margin-top: 0;
+    padding: 0 10px;
+    margin-bottom: 0;
+    &.solo {
+      margin-left: 0;
+    }
+  }
+  md-select {
+    float: left;
+    width: 100%;
+    margin: 0 0 9px 0;
+    height: 44px;
+    line-height: 44px;
+    padding-left: 10px;
+    min-height: 44px !important;
+  }
+  md-checkbox.md-default-theme.md-checked .md-icon, md-checkbox.md-checked .md-icon {
+    background-color: $base-color;
+    width: 20px;
+    height: 20px;
+  }
+
+  .md-button.md-default-theme:not([disabled]).md-focused, .md-button:not([disabled]).md-focused, .md-button.md-default-theme:not([disabled]):hover, .md-button:not([disabled]):hover {
+    background-color: $base-color2;
+  }
+  md-radio-group {
+    margin-bottom: 20px;
+  }
+  //구성원 변경
+  .team {
+    padding: 0;
+    md-list-item.md-2-line {
+      border-bottom: 1px solid #ddd;
+      &:last-child{
+        border-bottom:none
+      }
+    }
+    .md-button {
+      background-color: transparent;
+      color: #e43a33;
+      padding: 0;
+      min-width: 65px;
+      &:hover {
+        color: #d02720;
+        background-color: transparent;
+      }
+    }
+  }
+  .popup_bottom {
+    padding: 0 30px 30px;
+    .md-button {
+      width: 100%;
+      margin: 0;
+      line-height: 46px;
+      min-height: 46px;
+    }
+    md-divider {
+      margin: 15px 0;
+      width: 100%;
+    }
+    .etc {
+      width: 100%;
+      text-align: center;
+      p {
+        font-size: 10pt;
+        text-align: center;
+        margin-top: 10px;
+        a {
+          color: $base-color;
+          cursor: pointer;
+        }
+      }
+      md-checkbox {
+        margin-bottom: 0;
+        margin-top: 10px;
+        .md-label {
+          font-size: 10pt;
+          margin-top: -5px;
+          margin-left: 27px;
+          color: #333;
+        }
+      }
+      .t_btn {
+        font-size: 10pt;
+        letter-spacing: -1px;
+        color: $base-color;
+        display: inline-block;
+        margin-top: 11px;
+        margin-left: 10px;
+        cursor: pointer;
+      }
+    }
+    &.nopadding {
+      padding: 0;
+      .md-button {
+        background-color: transparent;
+        color: #333;
+        border-top: 1px solid #ddd;
+        line-height: 56px;
+        min-height: 56px;
+        border-radius: 0;
+        &:first-child {
+          border-right: 1px solid #ddd;
+        }
+        &.red {
+          background-color: $base-color3;
+          color: #fff;
+        }
+      }
+    }
+  }
+  .radio_label {
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 12px;
+    margin-bottom: 10px;
+    margin-top: 0;
+  }
+  md-radio-button .md-label {
+    font-size: 11pt;
+    margin-top: -4px;
+  }
+  md-radio-button.md-default-theme .md-on, md-radio-button .md-on {
+    background-color: $base-color;
+  }
+  md-radio-button.md-default-theme.md-checked .md-off, md-radio-button.md-checked .md-off {
+    border-color: $base-color;
+  }
+  .md-datepicker-button {
+    display: none;
+  }
+
+  //서비스 추가신청용
+  .service_add{
+    margin-bottom: 0;
+    md-radio-button {
+      margin-bottom: 0;
+      padding: 15px 0 15px 15px;
+      border-bottom: 1px solid #ddd;
+      .md-container {
+        left: 15px;
+      }
+    }
+  }
+  .popup_sum {
+    padding: 10px 15px 12px 15px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid #ddd;
+    font-size: 11pt;
+    background-color: #efefef;
+    div {
+      text-align: right;
+      b {
+        color: #ffa700;
+        font-size: 19pt;
+        font-weight: 400;
+        padding-right: 4px;
+      }
+    }
+  }
+  .service_add_info{
+    padding: 15px 20px;
+    font-size: 11pt;
+    border-bottom: 1px solid #ddd;
+  }
+  md-dialog-content ~ p {
+    text-align: center;
+    font-size: 10pt;
+  }
+  //회원가입 약관
+  .terms_chk {
+    font-size: 10pt;
+    padding: 20px 20px 0;
+    .terms_list {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      position: relative;
+      md-input-container {
+        margin: 0;
+        padding: 0;
+        border-bottom: 1px solid #ddd;
+        .md-input-message-animation:not(.md-char-counter) {
+          padding-left: 45px;
+          padding-bottom: 7px;
+          padding-top: 0;
+        }
+      }
+      md-checkbox {
+        margin: 0;
+        padding: 10px 0;
+        .md-container {
+          margin-left: 15px;
+        }
+        .md-label {
+          margin-left: 45px;
+          margin-top: -5px;
+        }
+      }
+      a {
+        color: #555;
+        cursor: pointer;
+        position: absolute;
+        &.line_1 {
+          right: 15px;
+          top: 11px;
+        }
+        &.line_2 {
+          right: 15px;
+          top: 11px;
+        }
+      }
+
+    }
+    md-checkbox.md-default-theme.md-checked .md-ink-ripple, md-checkbox.md-checked .md-ink-ripple {
+      color: $base-color;
+    }
+    md-checkbox.md-default-theme.md-checked .md-icon, md-checkbox.md-checked .md-icon {
+      background-color: $base-color;
+    }
+  }
+
+  //아이디 확인
+  .find_result{
+    padding: 30px;
+    text-align: center;
+    p{
+      color: $base-color2;
+      margin-top: 10px;
+      font-size: 14pt;
+    }
+  }
+  .sug_title {
+    padding: 16px;
+    border-bottom: 1px solid #ddd;
+    font-size: 10pt;
+    h3 {
+      font-weight: normal;
+      font-size: 11pt;
+    }
+  }
+  .sug_body {
+    padding: 16px 16px 30px;
+    font-size: 11pt;
+    white-space: pre-line;
+  }
+  &.start {
+    text-align: center;
+    .pop_title {
+      height: 140px;
+      text-align: center;
+      margin: auto;
+      padding: 30px 0;
+      img {
+        clear: both;
+      }
+    }
+    md-toolbar .md-toolbar-tools{
+      height: 140px;
+      max-height: 140px;
+    }
+    md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
+      min-height: 120px;
+    }
+    md-dialog-content{
+      h3 {
+        font-size: 20pt;
+        font-weight: normal;
+        margin-top: 25px !important;
+        min-height: 70px
+      }
+      p {
+        padding: 20px;
+        font-size: 10pt;
+
+      }
+      ul {
+        overflow: hidden;
+        margin-top: 20px;
+        padding-bottom: 370px;
+        background-image: url('/img/popup/popup_img.png');
+        background-repeat: no-repeat;
+        background-position: bottom center;
+        li {
+          float: left;
+          width: 25%;
+          span {
+            display: block;
+            font-size: 10pt;
+          }
+        }
+      }
+    }
+    md-dialog-actions {
+      background-color: #555;
+      min-height: 30px;
+      .md-button {
+        background-color: transparent !important;
+      }
+    }
+  }
+}
+//본인인증
+.certifi {
+  text-align: center;
+  padding: 45px 10px;
+}
+.certifi img{margin: auto}
+.certifi_title{
+  font-size: 16pt;
+  color: $base-color2;
+  margin-top: 20px;
+}
+.certifi_info{
+  font-size: 10pt;
+  margin-top: 10px;
+  line-height: 180%;
+}
+
+
+

@@ -1,0 +1,155 @@
+<div class="container sub">
+    <div class="sub_title_area">
+        <h3>인디언즈에서 신뢰할 수 있고<br />
+        다양한 경력을 가진 파트너를 만나보세요!</h3>
+        <div class="search">
+            <md-select name="RM_TYPE" ng-model="vm.search.MEM_TYPE" required="" aria-label="직군" placeholder="직군">
+
+                <!--                        <md-option ng-repeat="d in vm.diets" value="{{::d.CD}}">{{::d.TITLE}}</md-option>-->
+                <md-option value="0">전체</md-option>
+                <md-option ng-repeat="s in vm.member_type" value="{{::s.id}}">{{::s.title}}</md-option>
+
+                <!--<md-option value="01">기획자</md-option>
+                <md-option value="02">개발자</md-option>
+                <md-option value="03">원화가</md-option>
+                <md-option value="04">작곡가</md-option>
+                <md-option value="05">작가</md-option>
+                <md-option value="06">크리에이터</md-option>
+                <md-option value="07">기타</md-option>-->
+            </md-select>
+            <input type="text" ng-model="vm.search.MEM_NAME" placeholder="파트너 검색" >
+            <md-button aria-label="검색" class="search_icon" ng-click="vm.fnSearch()">검색</md-button>
+        </div>
+    </div>
+    <div class="project_list">
+        <md-content>
+            <md-card ng-repeat="partner in vm.partners" ng-click="vm.update(partner.MEM_ID)">
+                <img ng-if="partner.MEM_IMG" ng-src="{{partner.MEM_IMG}}" class="md-card-image" alt=""/>
+                <img ng-if="!partner.MEM_IMG" src="../../img/ex/ex_photo.png" class="md-card-image" alt="project"/>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">{{partner.MEM_NAME}}</span>
+                        <span>{{partner.MEM_TYPE}}  |  경력 {{partner.MEM_SKILLS}}</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+
+            <!--<md-card ng-click="vm.update()">
+                <img src="/img/main/ptoject_photo1.png" class="md-card-image" alt="project"/>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">최수영</span>
+                        <span>개발자  |  경력 5년 이상</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+            <md-card ng-click="vm.update()">
+                <img src="/img/main/ptoject_photo2.png" class="md-card-image" alt="project"/>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">김상옥</span>
+                        <span>개발자  |  경력 5년 이상</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+            <md-card ng-click="vm.update()">
+                <img src="/img/main/ptoject_photo3.png" class="md-card-image" alt="project"/>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">감박용</span>
+                        <span>기획자  |  경력 3년 이상</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+            <md-card ng-click="vm.update()">
+                <img src="/img/main/ptoject_photo1.png" class="md-card-image" alt="project"/>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">강하늘</span>
+                        <span>원화가  |  경력 2년 이상</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+            <md-card ng-click="vm.update()">
+                <img src="/img/main/ptoject_photo2.png" class="md-card-image" alt="project"/>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">스탈게임즈</span>
+                        <span>원화가  |  경력 4년 이상</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+            <md-card ng-click="vm.update()">
+                <img src="/img/main/ptoject_photo3.png" class="md-card-image" alt="project"/>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">이태영</span>
+                        <span>기획자  |  경력 2년 이상</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+            <md-card ng-click="vm.update()">
+                <img src="/img/main/ptoject_photo1.png" class="md-card-image" alt="project"/>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">박달수</span>
+                        <span>개발자  |  경력 2년 이상</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+            <md-card ng-click="vm.update()">
+                <img src="/img/main/ptoject_photo2.png" class="md-card-image" alt="project"/>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">유비소프트</span>
+                        <span>개발자  |  경력 5년 이상</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+            <md-card ng-click="vm.update()">
+                <img src="/img/main/ptoject_photo3.png" class="md-card-image" alt="project"/>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">프로테</span>
+                        <span>개발자  |  경력 4년 이상</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+            <md-card ng-click="vm.update()">
+                <img src="/img/main/ptoject_photo1.png" class="md-card-image" alt="project"/>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">감성육</span>
+                        <span>기획자  |  경력 2년 이상</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+            <md-card ng-click="vm.update()">
+                <img src="/img/main/ptoject_photo2.png" class="md-card-image" alt="project"/>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">최수영</span>
+                        <span>원화가  |  경력 6년 이상</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+            <md-card ng-click="vm.update()">
+                <img src="/img/main/ptoject_photo3.png" class="md-card-image" alt="project"/>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">오현석</span>
+                        <span>개발자  |  경력 6년 이상</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>-->
+        </md-content>
+
+        <ng-include src="'views/sub/paging.html'"></ng-include>
+    </div>
+
+</div>
+<!--<div class="input_form bottom_btn_group" layout="row">
+    <div flex layout="row" layout-align="end center">
+        <md-button aria-label="취소" ng-click="vm.update()">수정</md-button>
+    </div>
+</div>-->

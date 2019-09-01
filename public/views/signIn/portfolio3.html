@@ -1,0 +1,43 @@
+<!-- 작곡가 -->
+<div>
+    <div class="input_area photo" layout="column" layout-align="start start">
+        <label ng-if="vm.user.MEM_TYPE == '4'" class="input_label">포트폴리오 음원파일(.mp3 형식)</label>
+        <label ng-if="vm.user.MEM_TYPE == '5'" class="input_label">프롤로그 또는 시놉시스 파일(.pdf 형식)</label>
+        <label ng-if="vm.user.MEM_TYPE == '1'" class="input_label">본인 포트폴리오 업로드(.pdf 형식)</label>
+        <md-checkbox name="PIC_YN" ng-model="vm.user.PIC_YN" aria-label="없음" ng-true-value="'Y'" ng-false-value="'N'" ng-required="vm.files.length <= 0">
+            다음에 등록
+        </md-checkbox>
+        <div ng-messages="userForm.PIC_YN.$error" ng-if="vm.showError">
+            <div ng-message="required" class="error_t">포트폴리오를 등록해 주세요.</div>
+        </div>
+        <div class="post_input" layout="row" ng-show="vm.user.PIC_YN == 'N'">
+            <button ng-if="vm.user.MEM_TYPE == '4'" ngf-select="vm.fileSelect($files, $invalidFiles)" multiple accept="audio/*"
+                    class="md-raised input_add_btn">
+                <img src="img/plus.png" alt=""/>
+            </button>
+            <button ng-if="vm.user.MEM_TYPE != '4'" ngf-select="vm.fileSelect($files, $invalidFiles)" multiple accept="application/pdf"
+                    class="md-raised input_add_btn">
+                <img src="img/plus.png" alt=""/>
+            </button>
+        </div>
+
+        <div layout="row" flex class="clip_list">
+            <ul class="post_clip" ng-show="vm.user.PIC_YN == 'N'">
+                <li ng-repeat="f in vm.files" layout="row">
+                    <span>{{f.name}} {{f.$errorParam}}</span>
+                    <span class="progress" ng-show="f.progress >= 0">
+                        <div style="width:{{f.progress}}%" ng-bind="f.progress + '%'"></div>
+                    </span>
+                    <a ng-href="/download/{{f.id}}">{{f.org_file_name}}</a><a
+                        ng-click="vm.fnFileDelete($event, $index, f)" class="md-raised input_add_btn del"><img src="img/minus.png" alt=""/></a>
+                </li>
+            </ul>
+        </div>
+        <div class="post_clip" ng-if="vm.errFiles.length > 0">
+            <b>유효하지 않은 파일</b>
+            <ul>
+                <li ng-repeat="f in vm.errFiles">{{f.name}} {{f.$error}} {{f.$errorParam}}</li>
+            </ul>
+        </div>
+    </div>
+</div>

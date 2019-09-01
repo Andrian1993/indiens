@@ -1,0 +1,21 @@
+<div class="main_top" id="divTop">
+    <nav class="main_nav" layout="row" layout-align="space-between center">
+        <div flex>
+            <img ui-sref="home" src="/img/top_logo.png" alt="indiens"/>
+            <ul class="menu" layout="row">
+                <li><a ui-sref="Project">프로젝트</a></li>
+                <li><a ui-sref="Partner">파트너</a></li>
+                <li><a ui-sref="Notice">게시판</a></li>
+                <li><a ui-sref="Profile" ng-if="$root.currentUser.MEM_ADMIN_YN == 'N'">마이페이지</a></li>
+                <li><a ui-sref="Member" ng-if="$root.currentUser.MEM_ADMIN_YN == 'Y'">회원관리</a></li>
+                <!--<li ng-click="vm.startDialog()">팝업</li>-->
+            </ul>
+        </div>
+        <ul class="menu" layout="row">
+            <li ng-show="!$root.isAuthenticated()" ng-click="vm.loginPop()"><a>로그인</a></li>
+            <li ng-show="!$root.isAuthenticated()" ui-sref="SignIn"><a>회원가입</a></li>
+<!--            <li ng-show="!$root.isAuthenticated()" ui-sref="home.certificate"><a>회원가입</a></li>-->
+            <span class="user" ng-show="$root.isAuthenticated()">{{ ::$root.currentUser.MEM_NAME }} 님 <a ng-click="vm.logout(vm)">로그아웃</a></span>
+        </ul>
+    </nav>
+</div>

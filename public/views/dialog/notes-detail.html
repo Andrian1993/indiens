@@ -1,0 +1,28 @@
+<!-- 비밀번호 찾기 -->
+<form method="post" name="userForm" id="userForm">
+    <md-dialog style="width:450px;" class="popup">
+        <md-toolbar>
+            <div class="md-toolbar-tools" layout="row" layout-align="space-between  center">
+                <h2 class="pop_title">쪽지 확인</h2>
+                <md-button aria-label="닫기" ng-click="vm.cancel()"><img src="/img/popup/close.png"/></md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content layout="column">
+            <div class="sug_title">
+                <h3>{{vm.message.MEM_NAME}} {{vm.message.MSG_DT | date:"yyyy-MM-dd"}}</h3>
+            </div>
+            <p class="sug_body">{{vm.message.MSG_MESSAGE}}</p>
+        </md-dialog-content>
+        <md-dialog-actions layout="row" class="popup_bottom">
+            <md-button ng-click="vm.cancel()" ng-disabled='loginForm.$invalid'
+                       class="md-raised md-button md-ink-ripple">
+                확인
+            </md-button>
+            <span flex="5"></span>
+            <md-button ng-if="!vm.message.NO_ANSWER" ng-click="vm.confirm()" ng-disabled='loginForm.$invalid'
+                       class="md-raised md-button md-ink-ripple">
+                답장
+            </md-button>
+        </md-dialog-actions>
+    </md-dialog>
+</form>

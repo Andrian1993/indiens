@@ -1,0 +1,39 @@
+<!-- 로그인 -->
+<form method="post" name="loginForm" id="loginForm">
+    <md-dialog style="width:470px;" class="popup">
+        <md-toolbar>
+            <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+                <h2 class="pop_title">로그인</h2>
+                <md-button aria-label="닫기" ng-click="vm.cancel()"><img src="/img/popup/close.png"/></md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content layout="column">
+            <div class="input_form nob" layout="column">
+                <md-input-container class="md-block" md-no-float>
+                    <input required="" name="MEM_EMAIL" maxlength="50" ng-model="vm.credentials.email" type="text" placeholder="이메일"/>
+                    <div ng-messages="loginForm.MEM_EMAIL.$error" ng-if="vm.showError">
+                        <div class="denger" ng-message="required">이메일을 입력해 주세요.</div>
+                        <div ng-message="md-maxlength">이메일은 50자 이내로 입력해 주세요.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block" md-no-float>
+                    <input required="" name="MEM_PASS" maxlength="20" txt-enter="vm.loginReal()" ng-model="vm.credentials.password" type="password" placeholder="비밀번호"/>
+                    <div ng-messages="loginForm.MEM_PASS.$error" ng-if="vm.showError">
+                        <div class="denger" ng-message="required">비밀번호를 입력해 주세요.</div>
+                        <div ng-message="md-maxlength">비밀번호는 20자 이내로 입력해 주세요.</div>
+                    </div>
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+        <p style="color: red" class="text-center">{{ vm.error }}</p>
+        <md-dialog-actions layout="column" class="popup_bottom">
+            <md-button ng-click="vm.loginReal()" ng-disabled='loginForm.$invalid' >로그인</md-button>
+            <div class="etc">
+                <p>아직 회원 가입을 하지 않으셨나요? <a ng-click="vm.goSign()">회원가입</a></p>
+<!--                <p>아직 회원 가입을 하지 않으셨나요? <a ui-sref="home.certificate">회원가입</a></p>-->
+                <a ng-click="vm.findEmail()" class="t_btn">이메일 찾기</a>
+                <a ng-click="vm.resetPwd()" class="t_btn">비밀번호 재설정</a>
+            </div>
+        </md-dialog-actions>
+    </md-dialog>
+</form>

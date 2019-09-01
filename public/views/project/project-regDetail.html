@@ -1,0 +1,275 @@
+<div class="container sub">
+    <div class="sub_title_area pb80">
+        <img src="/img/project/step2.png" alt="step2"/>
+        <p>
+            STEP 2<br />
+            <span>프로젝트의 프로젝트 단계 및 상세정보를<br />입력해 주세요.</span>
+        </p>
+    </div>
+    <form method="post" name="inputForm" id="inputForm">
+        <!-- 프로젝트 진행상태  -->
+        <div class="jobs">
+            <md-radio-group ng-model="vm.data.PJT_STEP" class="md-primary" layout="row">
+                <md-radio-button value="1">
+                    <a>
+                        <img src="/img/job_icon_6.png" alt="process1"/>
+                        <span>아이디어 단계</span>
+                    </a>
+                </md-radio-button>
+                <md-radio-button value="2">
+                    <a>
+                        <img src="/img/job_icon_8.png" alt="process2"/>
+                        <span>필요기능정리 완료</span>
+                    </a>
+                </md-radio-button>
+                <md-radio-button value="3">
+                    <a>
+                        <img src="/img/job_icon_5.png" alt="process3"/>
+                        <span>기획서 작성중</span>
+                    </a>
+                </md-radio-button>
+                <md-radio-button value="4">
+                    <a>
+                        <img src="/img/job_icon_1.png" alt="process4"/>
+                        <span>상세기획서 보유</span>
+                    </a>
+                </md-radio-button>
+                <md-radio-button value="5">
+                    <a>
+                        <img src="/img/job_icon_2.png" alt="process5"/>
+                        <span>개발중</span>
+                    </a>
+                </md-radio-button>
+            </md-radio-group>
+            <div ng-messages="{'required': vm.optionReq}" md-auto-hide="false">
+                <div ng-message="required" class="error_t">옵션을 선택해 주세요.</div>
+            </div>
+        </div>
+        <!-- 프로젝트 정보-->
+        <div class="input_area project" flex layout="column">
+            <!-- 제목 -->
+            <md-input-container class="md-block" md-no-float >
+                <input type="text" name="PJT_NAME" ng-model="vm.data.PJT_NAME" required="" ng-maxlength="50" placeholder="프로젝트 제목">
+                <div ng-messages="inputForm.PJT_NAME.$error" ng-if="vm.showError">
+                    <div ng-message="required">프로젝트 제목을 입력해 주세요.</div>
+                    <div ng-message="ng-maxlength">프로젝트 제목은 50자 이내로 입력해 주세요.</div>
+                </div>
+            </md-input-container>
+            <!-- 내용 -->
+            <md-input-container class="md-block" md-no-float >
+                <textarea name="PJT_DESC" ng-model="vm.data.PJT_DESC" required="" rows="4" ng-maxlength="1000" placeholder="프로젝트 설명"></textarea>
+                <div ng-messages="inputForm.PJT_DESC.$error" ng-if="vm.showError">
+                    <div ng-message="required">프로젝트 설명을 입력해 주세요.</div>
+                    <div ng-message="ng-maxlength">프로젝트 설명은 1000자 이내로 입력해 주세요.</div>
+                </div>
+            </md-input-container>
+        </div>
+        <div class="input_area project" layout="column">
+            <label class="input_label t9">팀원모집기한</label>
+            <md-input-container class="md-block md-input-has-value">
+                <md-datepicker name="PJT_DUE_DT" ng-model="vm.data.PJT_DUE_DT"  md-placeholder="팀원모집기한"
+                               ng-required="!vm.data.PJT_DUE_DT" md-min-date="vm.minDate"></md-datepicker>
+                <div ng-messages="inputForm.PJT_DUE_DT.$error" ng-if="vm.showError">
+                    <div ng-message="required">팀원모집기한을 입력해 주세요.</div>
+                </div>
+            </md-input-container>
+        </div>
+
+        <!-- 프로젝트 사진 -->
+        <div class="input_area project" layout="row">
+            <div class="photo">
+                <label class="input_label">프로젝트 사진 (1800x1025 사이즈 / jpg, png 이미지)</label>
+                <div layout="row" layout-align="start end">
+                    <img ng-hide="vm.picFile" ng-show="vm.data.PJT_LOGO" class="" no-cache-src="{{vm.data.PJT_LOGO}}" ng-if="vm.data.PJT_LOGO">
+                    <md-input-container class="md-block btn_group file-upload ">
+                        <img ng-show="inputForm.file.$valid" ngf-thumbnail="vm.picFile" class="">
+                        <div class="blank_btn">
+                            <span>이미지 첨부</span>
+                            <input aria-label="이미지 첨부" type="file" ngf-select ng-model="vm.picFile" name="file"
+                                   class="upload" ngf-model-invalid="errorFile" ng-required="vm.required1">
+                        </div>
+                        <span class="progress" ng-show="vm.picFile.progress >= 0">
+                        <div style="width:{{vm.picFile.progress}}%" ng-bind="vm.picFile.progress + '%'"></div>
+                      </span>
+                        <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+                        <div ng-messages="inputForm.file.$error" ng-if="vm.showError" md-auto-hide="false">
+                            <div ng-message="required">프로젝트 사진을 선택해 주세요.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            <div flex></div>
+        </div>
+
+        <!-- 필요직군 -->
+        <div class="input_area project" layout="column">
+            <div layout="row" layout-align="space-between center">
+                <label class="label_txt">필요직군</label>
+                <md-button class="md-raised input_add_btn" type="button" aria-label="추가" ng-click="vm.addDetail()"><img src="img/plus.png" alt=""/></md-button>
+            </div>
+
+            <div layout="row" layout-align="space-between center" class="select n_add" ng-repeat="p in vm.data.workers">
+                <md-input-container md-no-float flex="15" layout="column">
+                    <md-select name="JOB_TYPE" ng-model="p.JOB_TYPE" aria-label="직군" required=""
+                               placeholder="직군">
+                        <md-option ng-repeat="d in vm.member_type" value="{{::d.id}}">{{::d.title}}</md-option>
+                        <!-- <md-option value="1">기획자</md-option>
+                         <md-option value="2">개발자</md-option>
+                         <md-option value="3">원화가</md-option>
+                         <md-option value="4">작곡가</md-option>
+                         <md-option value="5">작가</md-option>
+                         <md-option value="6">크리에이터</md-option>
+                         <md-option value="7">기타</md-option>-->
+                    </md-select>
+                    <div ng-messages="inputForm.JOB_TYPE.$error" ng-if="vm.showError">
+                        <div ng-message="required">직군을 선택해 주세요.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container md-no-float flex="20" layout="column">
+                    <md-select name="JOB_PAY_TYPE" ng-model="p.JOB_PAY_TYPE" aria-label="임금지급방식"
+                               placeholder="임금지급방식" required="">
+                        <!--                        <md-option ng-repeat="d in vm.diets" value="{{::d.CD}}">{{::d.TITLE}}</md-option>-->
+                        <md-option value="1">임금 지급형</md-option>
+                        <md-option value="2">수익 배분형</md-option>
+                    </md-select>
+                    <div ng-messages="inputForm.JOB_PAY_TYPE.$error" ng-if="vm.showError">
+                        <div ng-message="required">임금지급방식을 선택해 주세요.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container md-no-float flex="15" layout="column">
+                    <md-select name="JOB_DEV_MM" ng-model="p.JOB_DEV_MM" aria-label="기간"
+                               placeholder="기간" required="">
+                        <!--                        <md-option ng-repeat="d in vm.diets" value="{{::d.CD}}">{{::d.TITLE}}</md-option>-->
+                        <md-option value="1">1개월</md-option>
+                        <md-option value="2">2개월</md-option>
+                        <md-option value="3">3개월</md-option>
+                        <md-option value="4">4개월</md-option>
+                        <md-option value="5">5개월</md-option>
+                        <md-option value="6">6개월</md-option>
+                        <md-option value="7">7개월</md-option>
+                        <md-option value="8">8개월</md-option>
+                        <md-option value="9">9개월</md-option>
+                        <md-option value="10">10개월</md-option>
+                        <md-option value="11">11개월</md-option>
+                        <md-option value="12">12개월</md-option>
+                    </md-select>
+                    <div ng-messages="inputForm.JOB_DEV_MM.$error" ng-if="vm.showError">
+                        <div ng-message="required">기간을 선택해 주세요.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container md-no-float flex="45">
+                    <input type="text" name="JOB_ROLE" ng-model="p.JOB_ROLE"
+                           placeholder="참여영역을 입력하세요" kr-input required="">
+                    <div ng-messages="inputForm.JOB_ROLE.$error" ng-if="vm.showError">
+                        <div ng-message="required">참여영역을 입력해 주세요.</div>
+                    </div>
+                </md-input-container>
+                <md-button class="md-raised" type="button" aria-label="삭제" ng-click="vm.removeDetail($event, $index, 1, p.JOB_ID)"><img src="img/minus.png" alt=""/></md-button>
+            </div>
+
+
+            <!--            <div layout="row" layout-align="start center" class="select n_add" ng-repeat="c in vm.facility.class">-->
+            <div layout="row" layout-align="space-between center" class="select n_add" ng-repeat="d in vm.data.details">
+                <md-input-container md-no-float flex="15" layout="column">
+                    <md-select name="JOB_TYPE" ng-model="d.JOB_TYPE" aria-label="직군" ng-required="true"
+                               placeholder="직군">
+                        <md-option ng-repeat="d in vm.member_type" value="{{::d.id}}">{{::d.title}}</md-option>
+                       <!-- <md-option value="1">기획자</md-option>
+                        <md-option value="2">개발자</md-option>
+                        <md-option value="3">원화가</md-option>
+                        <md-option value="4">작곡가</md-option>
+                        <md-option value="5">작가</md-option>
+                        <md-option value="6">크리에이터</md-option>
+                        <md-option value="7">기타</md-option>-->
+                    </md-select>
+                    <div ng-messages="inputForm.JOB_TYPE.$error" ng-if="vm.showError">
+                        <div ng-message="required">직군을 선택해 주세요.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container md-no-float flex="20" layout="column">
+                    <md-select name="JOB_PAY_TYPE" ng-model="d.JOB_PAY_TYPE" aria-label="임금지급방식" ng-required="true"
+                               placeholder="임금지급방식">
+                        <!--                        <md-option ng-repeat="d in vm.diets" value="{{::d.CD}}">{{::d.TITLE}}</md-option>-->
+                        <md-option value="1">임금 지급형</md-option>
+                        <md-option value="2">수익 배분형</md-option>
+                    </md-select>
+                    <div ng-messages="inputForm.JOB_PAY_TYPE.$error" ng-if="vm.showError">
+                        <div ng-message="required">임금지급방식을 선택해 주세요.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container md-no-float flex="15" layout="column">
+                    <md-select name="JOB_DEV_MM" ng-model="d.JOB_DEV_MM" aria-label="기간" ng-required="true"
+                               placeholder="기간">
+                        <!--                        <md-option ng-repeat="d in vm.diets" value="{{::d.CD}}">{{::d.TITLE}}</md-option>-->
+                        <md-option value="1">1개월</md-option>
+                        <md-option value="2">2개월</md-option>
+                        <md-option value="3">3개월</md-option>
+                        <md-option value="4">4개월</md-option>
+                        <md-option value="5">5개월</md-option>
+                        <md-option value="6">6개월</md-option>
+                        <md-option value="7">7개월</md-option>
+                        <md-option value="8">8개월</md-option>
+                        <md-option value="9">9개월</md-option>
+                        <md-option value="10">10개월</md-option>
+                        <md-option value="11">11개월</md-option>
+                        <md-option value="12">12개월</md-option>
+                    </md-select>
+                    <div ng-messages="inputForm.JOB_DEV_MM.$error" ng-if="vm.showError">
+                        <div ng-message="required">기간을 선택해 주세요.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container md-no-float flex="45">
+                    <input type="text" name="JOB_ROLE" ng-model="d.JOB_ROLE" ng-required="true"
+                           placeholder="참여영역을 입력하세요" kr-input>
+                    <div ng-messages="inputForm.JOB_ROLE.$error" ng-if="vm.showError">
+                        <div ng-message="required">참여영역을 입력해 주세요.</div>
+                    </div>
+                </md-input-container>
+                <md-button class="md-raised" type="button" aria-label="삭제" ng-click="vm.removeDetail($event, $index, 2, 0)"><img src="img/minus.png" alt=""/></md-button>
+            </div>
+        </div>
+
+        <div class="chk_list cate edit" ng-if="vm.data.PJT_TYPE">
+            <label class="label_txt">장르</label>
+            <md-input-container>
+                <!-- <md-checkbox ng-model="vm.data.ET_OPTION[t.CD]" aria-label="{{::t.CD_NAME}}" ng-repeat="t in vm.options" value="{{::t.CD}}">
+                     {{::t.CD_NAME}}
+                     </md-checkbox>  -->
+                <md-checkbox ng-model="vm.data.PJT_TYPE[1]" aria-label="액션" value="action">액션</md-checkbox>
+                <md-checkbox ng-model="vm.data.PJT_TYPE[2]" aria-label="슈팅" value="shooting">슈팅</md-checkbox>
+                <md-checkbox ng-model="vm.data.PJT_TYPE[3]" aria-label="전략전술" value="strategytactics">전략전술</md-checkbox>
+                <md-checkbox ng-model="vm.data.PJT_TYPE[4]" aria-label="RPG" value="RPG">RPG</md-checkbox>
+                <md-checkbox ng-model="vm.data.PJT_TYPE[5]" aria-label="어드밴처" value="adventure">어드밴처</md-checkbox>
+                <md-checkbox ng-model="vm.data.PJT_TYPE[6]" aria-label="호러" value="horror">호러</md-checkbox>
+                <md-checkbox ng-model="vm.data.PJT_TYPE[7]" aria-label="시뮬레이션" value="simulation">시뮬레이션</md-checkbox>
+                <md-checkbox ng-model="vm.data.PJT_TYPE[8]" aria-label="탈출" value="escape">탈출</md-checkbox>
+                <md-checkbox ng-model="vm.data.PJT_TYPE[9]" aria-label="롤플레잉" value="roleplaying">롤플레잉</md-checkbox>
+                <md-checkbox ng-model="vm.data.PJT_TYPE[10]" aria-label="서바이벌" value="survival">서바이벌</md-checkbox>
+                <md-checkbox ng-model="vm.data.PJT_TYPE[11]" aria-label="스포츠" value="sports">스포츠</md-checkbox>
+                <md-checkbox ng-model="vm.data.PJT_TYPE[12]" aria-label="교육" value="edu">교육</md-checkbox>
+                <md-checkbox ng-model="vm.data.PJT_TYPE[13]" aria-label="FPS" value="fps">FPS</md-checkbox>
+                <md-checkbox ng-model="vm.data.PJT_TYPE[14]" aria-label="비트" value="bits">비트</md-checkbox>
+                <md-checkbox ng-model="vm.data.PJT_TYPE[15]" aria-label="기타" value="etc" class="etc">기타</md-checkbox>
+                <div ng-messages="{'required': vm.optionReq}" md-auto-hide="false">
+                    <div ng-message="required">장르를 선택해 주세요.</div>
+                </div>
+            </md-input-container>
+            <form name="inputForm">
+                <md-input-container class="md-block etc" flex="85">
+                    <!--        <input type="text" name="ET_OPTION_ETC" ng-model="vm.data.ET_OPTION_ETC" ng-required="vm.data.ET_OPTION['OT15']" ng-disabled="!vm.data.ET_OPTION['OT15']">-->
+                    <input type="text" name="PJT_TYPE_ETC" ng-model="vm.data.PJT_TYPE_ETC" ng-required="vm.data.PJT_TYPE[15]">
+                    <div ng-messages="inputForm.PJT_TYPE_ETC.$error" ng-if="vm.showError">
+                        <div ng-message="required">기타 내용을 입력해 주세요.</div>
+                    </div>
+                </md-input-container>
+            </form>
+        </div>
+
+
+    </form>
+    <div layout="row" class="join_btn">
+        <md-button flex="20" class="gray" aria-label="이전" ng-click="vm.delete()" ng-if="vm.edit == 'N'">이전</md-button>
+        <md-button flex="20" class="gray" aria-label="취소" ng-click="vm.cancel()" ng-if="vm.edit == 'Y'">취소</md-button>
+        <md-button flex aria-label="등록" ng-click="vm.update()">등록</md-button>
+    </div>
+</div>

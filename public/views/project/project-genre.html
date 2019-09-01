@@ -1,0 +1,48 @@
+<div class="container sub">
+    <div class="sub_title_area">
+        <img src="/img/project/step1.png" alt="step1"/>
+        <p>
+            STEP 1<br />
+            <span>생성할 프로젝트의 장르를 선택해주세요.<br />(중복선택 가능)</span>
+        </p>
+    </div>
+    <div class="chk_list cate" >
+        <md-input-container>
+            <!-- <md-checkbox ng-model="vm.data.ET_OPTION[t.CD]" aria-label="{{::t.CD_NAME}}" ng-repeat="t in vm.options" value="{{::t.CD}}">
+                 {{::t.CD_NAME}}
+                 </md-checkbox>  -->
+            <md-checkbox ng-model="vm.data.PJT_TYPE[1]" aria-label="액션" value="action">액션</md-checkbox>
+            <md-checkbox ng-model="vm.data.PJT_TYPE[2]" aria-label="슈팅" value="shooting">슈팅</md-checkbox>
+            <md-checkbox ng-model="vm.data.PJT_TYPE[3]" aria-label="전략전술" value="strategytactics">전략전술</md-checkbox>
+            <md-checkbox ng-model="vm.data.PJT_TYPE[4]" aria-label="RPG" value="RPG">RPG</md-checkbox>
+            <md-checkbox ng-model="vm.data.PJT_TYPE[5]" aria-label="어드밴처" value="adventure">어드밴처</md-checkbox>
+            <md-checkbox ng-model="vm.data.PJT_TYPE[6]" aria-label="호러" value="horror">호러</md-checkbox>
+            <md-checkbox ng-model="vm.data.PJT_TYPE[7]" aria-label="시뮬레이션" value="simulation">시뮬레이션</md-checkbox>
+            <md-checkbox ng-model="vm.data.PJT_TYPE[8]" aria-label="탈출" value="escape">탈출</md-checkbox>
+            <md-checkbox ng-model="vm.data.PJT_TYPE[9]" aria-label="롤플레잉" value="roleplaying">롤플레잉</md-checkbox>
+            <md-checkbox ng-model="vm.data.PJT_TYPE[10]" aria-label="서바이벌" value="survival">서바이벌</md-checkbox>
+            <md-checkbox ng-model="vm.data.PJT_TYPE[11]" aria-label="스포츠" value="sports">스포츠</md-checkbox>
+            <md-checkbox ng-model="vm.data.PJT_TYPE[12]" aria-label="교육" value="edu">교육</md-checkbox>
+            <md-checkbox ng-model="vm.data.PJT_TYPE[13]" aria-label="FPS" value="fps">FPS</md-checkbox>
+            <md-checkbox ng-model="vm.data.PJT_TYPE[14]" aria-label="비트" value="bits">비트</md-checkbox>
+            <md-checkbox ng-model="vm.data.PJT_TYPE[15]" aria-label="기타" value="etc" class="etc">기타</md-checkbox>
+            <div ng-messages="{'required': vm.optionReq}" md-auto-hide="false">
+                <div ng-message="required">장르를 선택해 주세요.</div>
+            </div>
+        </md-input-container>
+        <form name="inputForm">
+            <md-input-container class="md-block etc" flex="85">
+                <!--        <input type="text" name="ET_OPTION_ETC" ng-model="vm.data.ET_OPTION_ETC" ng-required="vm.data.ET_OPTION['OT15']" ng-disabled="!vm.data.ET_OPTION['OT15']">-->
+                <input type="text" name="PJT_TYPE_ETC" ng-model="vm.data.PJT_TYPE_ETC" ng-required="vm.data.PJT_TYPE[15]">
+                <div ng-messages="inputForm.PJT_TYPE_ETC.$error" ng-if="vm.showError">
+                    <div ng-message="required">기타 내용을 입력해 주세요.</div>
+                </div>
+            </md-input-container>
+        </form>
+    </div>
+
+    <div layout="row" class="join_btn">
+        <md-button flex="20" class="gray" aria-label="취소" ng-click="vm.cancel()">취소</md-button>
+        <md-button flex aria-label="다음" ng-click="vm.update()">다음</md-button>
+    </div>
+</div>

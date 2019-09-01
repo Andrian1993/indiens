@@ -1,0 +1,46 @@
+<!-- 비밀번호 찾기 -->
+<form method="post" name="userForm" id="userForm">
+    <md-dialog style="width:450px;" class="popup">
+        <md-toolbar>
+            <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+                <h2 class="pop_title">비밀번호 재설정</h2>
+                <md-button aria-label="닫기" ng-click="vm.cancel()"><img src="/img/popup/close.png"/></md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content layout="column">
+            <div class="input_form nob" layout="column">
+                <p style="color: red" class="text-center">{{ vm.error }}</p>
+                <md-input-container class="md-block" md-no-float>
+                    <input name="MEM_EMAIL" type="email" ng-model="vm.user.MEM_EMAIL" required=""  placeholder="이메일" maxlength="50"/>
+                    <div ng-messages="userForm.MEM_EMAIL.$error" ng-if="vm.showError">
+                        <div class="denger" ng-message="required">이메일을 입력해 주세요.</div>
+                        <div ng-message="email">이메일 형식을 확인해주세요</div>
+                        <div ng-message="ng-maxlength">이메일은 50자 이내로 입력해 주세요.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block" md-no-float>
+                    <input name="MEM_TEL" type="text" ng-model="vm.user.MEM_TEL" required ng-pattern="/^([0-9]+)$/i" placeholder="전화번호">
+                    <div ng-messages="userForm.MEM_TEL.$error" ng-if="vm.showError">
+                        <div ng-message="required">전화번호를 입력해 주세요.</div>
+                        <div ng-message="pattern">전화번호는 숫자만 입력 가능합니다.</div>
+                        <div ng-message="ng-maxlength">전화번호는 20자 이내로 입력해 주세요.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block" md-no-float>
+                    <input name="MEM_NAME" type="text" ng-model="vm.user.MEM_NAME" required=""
+                           placeholder="성명" maxlength="30">
+                    <div ng-messages="userForm.MEM_NAME.$error" ng-if="vm.showError">
+                        <div ng-message="required" class="denger">성명을 입력해 주세요.</div>
+                        <div ng-message="ng-maxlength">성명은 50자 이내로 입력해 주세요.</div>
+                    </div>
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="column" class="popup_bottom">
+            <md-button ng-click="vm.confirm()" ng-disabled='loginForm.$invalid'
+                       class="md-raised md-button md-ink-ripple">
+                비밀번호 재설정
+            </md-button>
+        </md-dialog-actions>
+    </md-dialog>
+</form>

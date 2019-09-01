@@ -1,0 +1,35 @@
+<div class="container sub">
+    <div class="sub_title_area">
+        <h3 ng-if="vm.data">{{::vm.data.MEM_NAME}}님의 비밀번호를 변경 합니다.</h3>
+    </div>
+<!--{{vm.data}}-->
+    <form name="inputForm" class="join_form width">
+        <div class="input_form nob" layout="column">
+            <md-input-container class="md-block" md-no-float>
+                <input type="password" ng-model="vm.data.MEM_PASS" name="MEM_PASS" required="" ng-maxlength="30" placeholder="비밀번호">
+                <div ng-messages="inputForm.MEM_PASS.$error" ng-if="vm.showError">
+                    <div ng-message="required">비밀번호를 입력해 주세요.</div>
+                    <div ng-message="ng-maxlength">비밀번호는 30자 이내로 입력해 주세요.</div>
+                </div>
+            </md-input-container>
+
+            <md-input-container class="md-block" md-no-float>
+                <input type="password" name="confirm_password" ng-model="vm.data.confirm_password" ng-maxlength="30" required="" placeholder="비밀번호확인">
+
+                <div ng-messages="inputForm.confirm_password.$error" ng-if="vm.showError">
+                    <div ng-message="required">비밀번호 확인을 입력해 주세요.</div>
+                    <div ng-message="ng-maxlength">비밀번호 확인은 30자 이내로 입력해 주세요.</div>
+                </div>
+
+                <div ng-messages="vm.inputErrors" role="alert" md-auto-hide="false">
+                    <div ng-message="confirmPassword">비밀번호와 비밀번호 확인이 일치하지 않습니다.</div>
+                </div>
+            </md-input-container>
+        </div>
+    </form>
+    <div layout="row" class="join_btn">
+        <md-button flex="20" class="gray" aria-label="취소" ng-click="vm.cancel()">취소</md-button>
+        <md-button flex aria-label="비밀번호 재설정" ng-disabled="!vm.data" ng-click="vm.confirm()">비밀번호 재설정</md-button>
+    </div>
+
+</div>

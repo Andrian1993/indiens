@@ -1,0 +1,29 @@
+<div class="container sub">
+    <div class="sub_title_area">
+        <h3>게시판</h3>
+    </div>
+    <form method="post" name="userForm" id="inputForm">
+        <div class="input_area project qa" flex layout="column">
+            <!-- 제목 -->
+            <md-input-container class="md-block" md-no-float >
+                <input type="text" name="BRD_MAIN_TITLE" ng-model="vm.user.BRD_MAIN_TITLE" required="" ng-maxlength="50" placeholder="제목">
+                <div ng-messages="inputForm.BRD_MAIN_TITLE.$error" ng-if="vm.showError">
+                    <div ng-message="required">제목을 입력해 주세요.</div>
+                    <div ng-message="ng-maxlength">제목은 50자 이내로 입력해 주세요.</div>
+                </div>
+            </md-input-container>
+            <!-- 내용 -->
+            <md-input-container class="md-block" md-no-float >
+                <textarea name="BRD_MAIN_CONTENTS" ng-model="vm.user.BRD_MAIN_CONTENTS" rows="14" ng-maxlength="1000" placeholder="내용"></textarea>
+                <div ng-messages="inputForm.BRD_MAIN_CONTENTS.$error" ng-if="vm.showError">
+                    <div ng-message="required">내용을 입력해 주세요.</div>
+                    <div ng-message="ng-maxlength">내용은 1000자 이내로 입력해 주세요.</div>
+                </div>
+            </md-input-container>
+        </div>
+    </form>
+    <div layout="row" class="join_btn">
+        <md-button flex="20" class="gray" aria-label="취소" ng-click="vm.cancel()">취소</md-button>
+        <md-button flex aria-label="등록" ng-click="vm.update()">등록</md-button>
+    </div>
+</div>

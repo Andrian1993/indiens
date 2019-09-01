@@ -1,0 +1,61 @@
+<div class="join_form">
+    <div class="join_title pb80">
+        <h3>지금부터 당신이 인디언(Indie+an)으로 활동하기 위한<br />몇가지 사항을 체크하겠습니다.</h3>
+        <img src="/img/join/step2.png" alt="step1"/>
+        <p>
+            STEP 2<br />
+            당신의 직업은?
+        </p>
+    </div>
+    <div class="jobs">
+        <md-radio-group ng-model="vm.user.MEM_TYPE" class="md-primary" layout="row">
+            <md-radio-button value="1">
+                <a>
+                    <img src="/img/job_icon_1.png" alt="job1"/>
+                    기획자
+                </a>
+            </md-radio-button>
+            <md-radio-button value="2">
+                <a>
+                    <img src="/img/job_icon_2.png" alt="job1"/>
+                    개발자
+                </a>
+            </md-radio-button>
+            <md-radio-button value="3">
+                <a>
+                    <img src="/img/job_icon_3.png" alt="job1"/>
+                    원화가
+                </a>
+            </md-radio-button>
+            <md-radio-button value="4">
+                <a>
+                    <img src="/img/job_icon_4.png" alt="job1"/>
+                    작곡가
+                </a>
+            </md-radio-button>
+            <md-radio-button value="5">
+                <a>
+                    <img src="/img/job_icon_5.png" alt="job1"/>
+                    작가
+                </a>
+            </md-radio-button>
+            <md-radio-button value="6">
+                <a>
+                    <img src="/img/job_icon_6.png" alt="job1"/>
+                    크리에이터
+                </a>
+            </md-radio-button>
+            <md-radio-button value="7">
+                <a>
+                    <img src="/img/job_icon_7.png" alt="job1"/>
+                    기타
+                </a>
+            </md-radio-button>
+        </md-radio-group>
+    </div>
+
+    <div layout="row" class="join_btn">
+        <md-button flex="20" class="gray" aria-label="이전" ng-click="vm.delete()">이전</md-button>
+        <md-button flex aria-label="다음" ng-click="vm.update()">다음</md-button>
+    </div>
+</div>

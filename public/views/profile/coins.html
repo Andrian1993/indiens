@@ -1,0 +1,9 @@
+<h2 class="my_page_title">코인충전 <p>보유 코인 {{vm.user.MEM_COINS}}개</p></h2>
+<div class="coin">
+    <md-radio-group ng-model="vm.user.MEM_COINS_TYPE">
+        <md-radio-button ng-repeat="c in vm.price_type" value="{{c.id}}">{{c.coins}}코인 <p>{{c.price}}원</p></md-radio-button>
+        <!--<md-radio-button value="2">50코인 <p>4,800원</p></md-radio-button>
+        <md-radio-button value="3">100코인 <p>9,400원</p></md-radio-button>-->
+    </md-radio-group>
+    <md-button flex aria-label="구매" ng-click="vm.update()">구매</md-button>
+</div>

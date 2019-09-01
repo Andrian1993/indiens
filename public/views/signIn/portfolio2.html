@@ -1,0 +1,82 @@
+<!-- 원화가 -->
+<div layout="row">
+    <div class="input_area photo" layout="column" layout-align="start start">
+        <label class="input_label">포트폴리오 이미지 (최대 10장 / 사이즈 1070 x 1500 / jpg, png 이미지)</label>
+        <md-checkbox name="PIC_YN" ng-model="vm.user.PIC_YN" aria-label="없음" ng-true-value="'Y'" ng-false-value="'N'" ng-required="vm.files.length <= 0">
+            다음에 등록
+        </md-checkbox>
+        <div ng-messages="userForm.PIC_YN.$error" ng-if="vm.showError">
+            <div ng-message="required" class="error_t">포트폴리오를 등록해 주세요.</div>
+        </div>
+
+        <!--<div ng-show="vm.user.PIC_YN == 'N'">andrian</div>-->
+
+        <div ng-show="vm.user.PIC_YN == 'N'" class="product_img">
+            <div ng-repeat="f in vm.files">
+                <img ng-show="imgForm.file.$valid" ngf-thumbnail="f"
+                     class="">
+                <span ng-click="vm.picRemove($index)">버튼</span>
+            </div>
+
+            <div ng-repeat="(key, value) in vm.user.ETC_IMGS">
+                <img ng-show="value" no-cache-src="{{value}}">
+                <span ng-click="vm.removeCard($index, key)">버튼</span>
+            </div>
+
+           <!-- <ul layout="row">
+                <li flex="20"><img no-cache-src="{{vm.user.PRF_FILE}}"></li>
+                <li flex="20" ng-repeat="f in vm.user.attachments">
+                    &lt;!&ndash;<a ng-href="/download/{{f.id}}">{{f.org_file_name}} [{{f.file_size|number}} byte]</a><a
+                        ng-click="vm.fnFileDelete($event, $index, f)" class="del">X</a>&ndash;&gt;
+                    <img no-cache-src="{{f.PRF_FILE}}">
+                </li>
+            </ul>-->
+
+
+            <!--<ul class="post_clip width70" layout="row">
+                <li ng-repeat="f in vm.files" layout="row" flex="20">
+                    <span>
+                        <img ngf-thumbnail="f">
+                        &lt;!&ndash;<span>{{f.name}} {{f.$errorParam}}</span>&ndash;&gt;
+                    </span>
+                    &lt;!&ndash;<md-input-container md-no-float class="md-block btn_group" layout="row" flex="85">
+                        <input name="content" ng-model="f.content" md-maxlength="100" placeholder="설명" autofocus>
+
+                        <div ng-messages="imageForm.content.$error" ng-if="vm.showError">
+                            <div ng-message="md-maxlength">이미지 설명은 100자 이내로 입력해 주세요.</div>
+                        </div>
+                    </md-input-container>&ndash;&gt;
+
+                    <span class="progress" ng-show="f.progress >= 0">
+        <div style="width:{{f.progress}}%" ng-bind="f.progress + '%'"></div>
+      </span>
+                </li>
+            </ul>-->
+
+
+        </div>
+
+
+
+        <md-input-container class="md-block btn_group file-upload order" ng-show="vm.user.PIC_YN == 'N'">
+           <!-- <img ng-hide="vm.picFile2" ng-show="vm.user.PRF_FILE" class=""
+                 no-cache-src="{{vm.user.PRF_FILE}}">-->
+            <div class="blank_btn">
+                <span>이미지 첨부</span>
+                <input aria-label="사진첨부" type="file" ngf-select="vm.fileSelect($files, $invalidFiles)" ng-model="vm.picFile2"
+                       name="file"
+                       class="upload" multiple
+                       accept="image/*" ng-required="{{vm.user.PIC_YN == 'Y'}}"
+                       ngf-model-invalid="errorFile">
+            </div><!--ngf-max-size="10MB"-->
+            <span class="progress" ng-show="vm.picFile2.progress >= 0">
+                        <div style="width:{{vm.picFile2.progress}}%"
+                             ng-bind="vm.picFile2.progress + '%'"></div>
+                      </span>
+            <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+            <div ng-messages="imageForm2.file.$error" ng-if="vm.showError">
+                <div ng-message="required">이미지 파일을 선택해 주세요.</div>
+            </div>
+        </md-input-container>
+    </div>
+</div>

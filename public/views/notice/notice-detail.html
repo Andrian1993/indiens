@@ -1,0 +1,41 @@
+<div class="container sub">
+    <div class="sub_title_area">
+        <h3>게시판</h3>
+    </div>
+    <div class="board_area">
+        <div class="board_top">
+            <h4>{{vm.user.BRD_MAIN_TITLE}}</h4>
+            <p>{{vm.user.MEM_NAME}} {{vm.user.BRD_MAIN_DT | date:'yyyy-MM-dd'}}</p>
+        </div>
+        <div class="board_body">{{vm.user.BRD_MAIN_CONTENTS}}</div>
+        <div class="body_bottom_btn">
+            <md-button aria-label="수정" ng-click="vm.cancel()" class="board_btn left">목록</md-button>
+            <md-button aria-label="삭제" ng-click="vm.delete()" class="board_btn" ng-if="$root.currentUser.MEM_ID == vm.user.BRD_MAIN_MEM_ID">삭제</md-button>
+            <md-button aria-label="수정" ng-click="vm.update()" class="board_btn" ng-if="$root.currentUser.MEM_ID == vm.user.BRD_MAIN_MEM_ID">수정</md-button>
+        </div>
+        <div class="board_comment">
+            <h3>댓글</h3>
+            <ul>
+                <li ng-repeat="comment in vm.comments">
+                    <h4>{{comment.MEM_NAME}} <span>{{comment.BRD_SUB_DT | date:'yyyy-MM-dd'}}</span></h4>
+                    <p>{{comment.BRD_SUB_CONTENTS}}</p>
+<!--                    <p>{{comment.BRD_SUB_CONTENTS}} {{comment.MEM_EMAIL}}</p>-->
+                    <md-button ng-click="vm.editComment(comment.BRD_SUB_ID, comment.BRD_SUB_CONTENTS)" ng-if="$root.currentUser.MEM_ID == comment.BRD_SUB_MEM_ID">수정</md-button>
+                    <md-button ng-click="vm.deleteComment(comment.BRD_SUB_ID)" ng-if="$root.currentUser.MEM_ID == comment.BRD_SUB_MEM_ID">삭제</md-button>
+                </li>
+            </ul>
+        </div>
+        <div class="board_comment_input" ng-if="$root.currentUser">
+            <form method="post" name="commentFormData.form" id="commentForm">
+            <md-input-container class="md-block" md-no-float >
+                <textarea name="BRD_SUB_CONTENTS" ng-model="vm.user.BRD_SUB_CONTENTS" rows="4" ng-maxlength="1000" placeholder="댓글" required=""></textarea>
+                <div ng-messages="commentFormData.form.BRD_SUB_CONTENTS.$error" ng-if="vm.showError">
+                    <div ng-message="required">댓글을 입력해 주세요.</div>
+                    <div ng-message="ng-maxlength">댓글은 1000자 이내로 입력해 주세요.</div>
+                </div>
+            </md-input-container>
+            </form>
+            <md-button flex aria-label="등록" ng-click="vm.saveComment()">등록</md-button>
+        </div>
+    </div>
+</div>

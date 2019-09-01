@@ -1,0 +1,20 @@
+<div class="container sub">
+    <div class="sub_title_area">
+        <h3>문의하기</h3>
+    </div>
+    <div class="board">
+        <div class="search">
+            <input type="text" ng-model="vm.search.QUE_QS_TITLE" placeholder="검색" >
+            <md-button aria-label="검색" class="search_icon" ng-click="vm.search()">검색</md-button>
+            <md-button ng-show="$root.currentUser.MEM_ADMIN_YN == 'N'" aria-label="수정" ng-click="vm.new()" class="board_btn">문의등록</md-button>
+        </div>
+        <div id="client-grid1" ui-grid="vm.gridOptions" ui-grid-selection="" class="grid">
+            <div class="no-rows" ng-show="!vm.gridOptions.data.length">
+                <div class="msg">
+                    <span>검색 결과가 없습니다.</span>
+                </div>
+            </div>
+        </div>
+        <ng-include src="'views/sub/paging.html'"></ng-include>
+    </div>
+</div>

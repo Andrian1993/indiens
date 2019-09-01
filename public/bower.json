@@ -1,0 +1,34 @@
+{
+  "name": "Indeian",
+  "description": "인디언즈",
+  "main": "",
+  "authors": [
+    "HelloBiz"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.7.4",
+    "angular-material": "^1.1.10",
+    "angular-ui-router": "^1.0.20",
+    "angular-ui-grid": "^4.6.3",
+    "angular-paging": "^2.2.2",
+    "angular-breadcrumb": "^0.5.0",
+    "angular-google-chart": "^0.1.0",
+    "restangular": "^1.6.1",
+    "ng-file-upload": "^12.2.13",
+    "moment": "^2.18.1",
+    "angular-sanitize": "^1.7.4",
+    "angular-cookies": "^1.6.4",
+
+    "slick-carousel": "^1.8.1",
+    "angular-slick": "^0.2.1"
+  }
+}

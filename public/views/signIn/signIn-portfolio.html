@@ -1,0 +1,79 @@
+<!-- 원화가 -->
+<div class="join_form">
+    <div class="join_title pb80">
+        <h3>지금부터 당신이 인디언(Indie+an)으로 활동하기 위한<br />몇가지 사항을 체크하겠습니다.</h3>
+        <img src="/img/join/step3.png" alt="step1"/>
+        <p>
+            STEP 3<br />
+            포트폴리오 등록
+        </p>
+    </div>
+    <form method="post" name="userForm" id="userForm" class="portfolio">
+        <label class="label_txt">경력</label>
+        <md-input-container class="md-block selectrow" flex="35" md-no-float>
+
+            <md-select ng-model="vm.user.MEM_SKILLS" name="MEM_SKILLS" aria-label="개발경력" flex required="" placeholder="경력">
+                <md-option ng-repeat="s in vm.member_experience" value="{{::s.id}}">{{::s.title}}</md-option>
+                <!--<md-option value="T1">1년 미만</md-option>
+                <md-option value="T2">1년 이상</md-option>
+                <md-option value="T3">3년 이상</md-option>
+                <md-option value="T4">5년 이상</md-option>
+                <md-option value="T5">10년 이상</md-option>-->
+            </md-select>
+            <div ng-messages="userForm.MEM_SKILLS.$error" ng-if="vm.showError">
+                <div ng-message="required">경력을 선택해 주세요.</div>
+            </div>
+        </md-input-container>
+
+        <div class="input_area">
+            <div layout="row" layout-align="space-between center">
+                <label class="label_txt">개발 또는 참여한 게임</label>
+                <md-button ng-show="vm.user.GME_YN == 'N'" class="md-raised input_add_btn" type="button" aria-label="추가" ng-click="vm.addDetail()"><img src="img/plus.png" alt=""/></md-button>
+            </div>
+            <md-checkbox ng-model="vm.user.GME_YN" aria-label="없음" ng-true-value="'Y'" ng-false-value="'N'">
+                없음
+            </md-checkbox>
+            <!--            <div layout="row" layout-align="start center" class="select n_add" ng-repeat="c in vm.facility.class">-->
+
+            <div ng-if="vm.user.GME_YN == 'N'" layout="row" layout-align="space-between center" class="select n_add" ng-repeat="d in vm.user.details">
+                <md-input-container md-no-float flex="20" layout="column">
+                    <md-select name="GME_TYPE" ng-model="d.GME_TYPE" ng-required="vm.user.GME_YN == 'N'" aria-label="참여유형"
+                               placeholder="참여유형">
+                        <!--                        <md-option ng-repeat="d in vm.diets" value="{{::d.CD}}">{{::d.TITLE}}</md-option>-->
+                        <md-option value="1">1인개발</md-option>
+                        <md-option value="2">개발참여</md-option>
+                    </md-select>
+                    <div ng-messages="userForm.GME_TYPE.$error" ng-if="vm.showError">
+                        <div ng-message="required">참여유형을 선택해 주세요.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container md-no-float flex>
+                    <input type="text" name="GME_NAME" ng-model="d.GME_NAME" ng-required="vm.user.GME_YN == 'N'"
+                           placeholder="게임이름을 입력하세요" kr-input class="mr10">
+                    <div ng-messages="userForm.GME_NAME.$error" ng-if="vm.showError">
+                        <div ng-message="required">게임이름을 입력해 주세요.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container ng-show="d.GME_TYPE == '2'" md-no-float flex="45">
+                    <input type="text" name="GME_ROLE" ng-model="d.GME_ROLE" ng-required="vm.user.GME_YN == 'N' && d.GME_TYPE == '2'"
+                           placeholder="참여영역을 입력하세요" kr-input>
+                    <div ng-messages="userForm.GME_ROLE.$error" ng-if="vm.showError">
+                        <div ng-message="required">참여영역을 입력해 주세요.</div>
+                    </div>
+                </md-input-container>
+                <md-button class="md-raised" type="button" aria-label="삭제" ng-click="vm.removeDetail($event, $index, c)"><img src="img/minus.png" alt=""/></md-button>
+            </div>
+        </div>
+
+        <ng-include ng-if="vm.user.MEM_TYPE == '2'" src="'views/signIn/portfolio1.html'"></ng-include> <!-- 개발자 -->
+        <ng-include ng-if="vm.user.MEM_TYPE == '3'" src="'views/signIn/portfolio2.html'"></ng-include> <!-- 원화가 -->
+        <ng-include ng-if="vm.user.MEM_TYPE == '4' || vm.user.MEM_TYPE == '1' || vm.user.MEM_TYPE == '5'" src="'views/signIn/portfolio3.html'"></ng-include> <!-- 작곡가/기획자/작가 -->
+        <ng-include ng-if="vm.user.MEM_TYPE == '6'" src="'views/signIn/portfolio4.html'"></ng-include><!-- 크리에이터-->
+        <ng-include ng-if="vm.user.MEM_TYPE == '7'" src="'views/signIn/portfolio5.html'"></ng-include><!-- 기타-->
+
+    </form>
+        <div layout="row" class="join_btn">
+            <md-button flex="20" class="gray" aria-label="이전" ng-click="vm.delete()">이전</md-button>
+            <md-button flex aria-label="완료" ng-click="vm.update()">완료</md-button>
+        </div>
+</div>

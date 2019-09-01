@@ -1,0 +1,11 @@
+<!-- 크리에이터 -->
+<div class="link">
+<md-input-container class="md-block" md-no-float>
+    <label>유튜브/블로그 링크</label>
+    <input required="" name="MEM_LINK" maxlength="100" ng-model="vm.user.MEM_LINK" type="text" placeholder="이메일" autofocus/>
+    <div ng-messages="userForm.MEM_LINK.$error" ng-if="vm.showError">
+        <div class="denger" ng-message="required">링크를 입력해 주세요.</div>
+        <div ng-message="ng-maxlength">링크는 100자 이내로 입력해 주세요.</div>
+    </div>
+</md-input-container>
+</div>

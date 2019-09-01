@@ -1,0 +1,16 @@
+<section layout="row" layout-align="center center">
+    <md-button class="groupX left on">받은 제안정보</md-button>
+    <md-button class="groupX right" ui-sref="Profile.suggestionOut">보낸 제안정보</md-button>
+</section>
+<div class="board">
+    <div class="list_info">※ 코인을 사용하시면 받은 제안정보를 열람 가능합니다.</div>
+    <div id="client-grid1" ui-grid="vm.gridOptions" ui-grid-selection="" class="grid">
+        <div class="no-rows" ng-show="!vm.gridOptions.data.length">
+            <div class="msg">
+                <span>검색 결과가 없습니다.</span>
+            </div>
+        </div>
+    </div>
+    <ng-include src="'views/sub/paging.html'"></ng-include>
+<!--    <md-button aria-label="내용보기" ng-click="vm.suggestDetail()" class="board_btn">내용보기</md-button>-->
+</div>

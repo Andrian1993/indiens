@@ -1,0 +1,27 @@
+<div class="all_area" ng-controller="subAreaController as vm" >
+    <!-- 메뉴 -->
+    <div ui-view="uiLeftMenu" class="navbar"></div>
+    <!--  페이지 -->
+    <div ui-view="uiSubArea" class="right_content"></div>
+
+    <div class="push"></div>
+
+</div>
+
+<!-- 푸터 -->
+<div class="footer">
+    <div>
+        <img src="/img/footer_logo.png" alt="footer"/>
+        <div>
+            <ul layout="row">
+                <li><a ui-sref="home.ques">FAQ</a></li>
+                <li><a ui-sref="Questions">문의하기</a></li>
+                <li><a ui-sref="home.company">인디언즈 소개</a></li>
+                <li><a target="_blank" ui-sref="Privacy">개인정보 취급방침</a></li>
+                <li><a target="_blank" ui-sref="Terms">이용약관</a></li>
+            </ul>
+            <p>인디언즈 | 세종특별자치시 조치원읍 군청로 93, S-3<br />사업자등록번호 : 302-28-00477 | 대표자명 : 김제우 | 전화번호 : 010-7564-0545
+                <br />Copyright 2018. All rights reserved.</p>
+        </div>
+    </div>
+</div>

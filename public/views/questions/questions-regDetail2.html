@@ -1,0 +1,39 @@
+<div class="container sub">
+    <div class="sub_title_area">
+        <h3>문의하기</h3>
+    </div>
+    <div class="board_area">
+        <div class="board_top">
+            <h4>로그인이 안됩니다..</h4>
+            <p>2019-08-12</p>
+        </div>
+        <div class="board_body">안녕하세요...
+            분명 정상적인 계정으로 로그인했는데... 로그인이 안됩니다....
+            어떻게해야하나요??
+        </div>
+    </div>
+    <form method="post" name="inputForm" id="inputForm">
+        <div class="input_area project qa" flex layout="column">
+            <!-- 제목 -->
+            <md-input-container class="md-block" md-no-float >
+                <input type="text" name="ET_TITLE" ng-model="vm.data.ET_TITLE" required="" ng-maxlength="50" placeholder="답변 제목">
+                <div ng-messages="inputForm.ET_TITLE.$error" ng-if="vm.showError">
+                    <div ng-message="required">답변 제목을 입력해 주세요.</div>
+                    <div ng-message="ng-maxlength">답변 제목은 50자 이내로 입력해 주세요.</div>
+                </div>
+            </md-input-container>
+            <!-- 내용 -->
+            <md-input-container class="md-block" md-no-float >
+                <textarea name="ET_CONTENT" ng-model="vm.data.ET_CONTENT" rows="14" ng-maxlength="1000" placeholder="답변내용"></textarea>
+                <div ng-messages="inputForm.ET_CONTENT.$error" ng-if="vm.showError">
+                    <div ng-message="required">답변 내용을 입력해 주세요.</div>
+                    <div ng-message="ng-maxlength">답변 내용은 1000자 이내로 입력해 주세요.</div>
+                </div>
+            </md-input-container>
+        </div>
+    </form>
+    <div layout="row" class="join_btn">
+        <md-button flex="20" class="gray" aria-label="취소" ng-click="vm.cancel()">취소</md-button>
+        <md-button flex aria-label="등록" ng-click="vm.update()">등록</md-button>
+    </div>
+</div>

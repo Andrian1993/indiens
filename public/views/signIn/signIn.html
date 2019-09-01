@@ -1,0 +1,98 @@
+<!--<div class="join_form">-->
+<form method="post" name="userForm" class="join_form">
+    <div class="join_title">
+        <h3>지금부터 당신이 인디언(Indie+an)으로 활동하기 위한<br />몇가지 사항을 체크하겠습니다.</h3>
+        <img src="/img/join/step1.png" alt="step1"/>
+        <p>
+            STEP 1<br />
+            회원정보 입력
+        </p>
+    </div>
+    <div class="input_form nob" layout="column">
+        <md-input-container class="md-block" md-no-float>
+
+            <input required="" name="MEM_EMAIL" maxlength="50" ng-model="vm.user.MEM_EMAIL" type="email" placeholder="이메일" autofocus/>
+            <div ng-messages="userForm.MEM_EMAIL.$error" ng-if="vm.showError">
+                <div class="denger" ng-message="required">이메일을 입력해 주세요.</div>
+                <div ng-message="email">이메일 형식을 확인해주세요</div>
+                <div ng-message="ng-maxlength">이메일은 50자 이내로 입력해 주세요.</div>
+            </div>
+        </md-input-container>
+
+        <md-input-container class="md-block" md-no-float ng-if="!vm.user.MEM_ID">
+            <input required="" name="MEM_PASS" maxlength="30" ng-minlength="8"
+                   ng-model="vm.user.MEM_PASS" type="password" placeholder="비밀번호"/>
+            <div ng-messages="userForm.MEM_PASS.$error" ng-if="vm.showError">
+                <div class="denger" ng-message="required">비밀번호를 입력해 주세요.</div>
+                <div ng-message="minlength">비밀번호는 8자 이상 입력해 주세요.</div>
+                <div ng-message="ng-maxlength">비밀번호는 30자 이내로 입력해 주세요.</div>
+            </div>
+        </md-input-container>
+        <p>비밀번호 8자리 이상</p>
+        <md-input-container class="md-block" md-no-float ng-if="!vm.user.MEM_ID">
+            <input required="" name="confirm_password" maxlength="30"
+                   ng-model="vm.user.confirm_password" type="password" placeholder="비밀번호 확인" />
+            <div ng-messages="userForm.confirm_password.$error" ng-if="vm.showError">
+                <div class="denger" ng-message="required">비밀번호 확인을 입력해 주세요.</div>
+                <div ng-message="ng-maxlength">비밀번호 확인은 30자 이내로 입력해 주세요.</div>
+            </div>
+
+            <div ng-messages="vm.inputErrors" role="alert" md-auto-hide="false">
+                <div ng-message="confirmPassword">비밀번호와 비밀번호 확인이 일치하지 않습니다.</div>
+            </div>
+        </md-input-container>
+
+
+
+        <md-input-container class="md-block" md-no-float ng-if="vm.user.MEM_ID">
+            <input name="MEM_PASS_NEW" maxlength="30" ng-minlength="8"
+                   ng-model="vm.user.MEM_PASS_NEW" type="password" placeholder="새비밀번호"/>
+            <div ng-messages="userForm.MEM_PASS_NEW.$error" ng-if="vm.showError">
+                <div class="denger" ng-message="required">비밀번호를 입력해 주세요.</div>
+                <div ng-message="minlength">비밀번호는 8자 이상 입력해 주세요.</div>
+                <div ng-message="ng-maxlength">비밀번호는 30자 이내로 입력해 주세요.</div>
+            </div>
+        </md-input-container>
+        <p>비밀번호 8자리 이상</p>
+        <md-input-container class="md-block" md-no-float ng-if="vm.user.MEM_ID">
+            <input name="confirm_password_new" maxlength="30"
+                   ng-model="vm.user.confirm_password_new" type="password" placeholder="새비밀번호 확인" />
+            <div ng-messages="userForm.confirm_password_new.$error" ng-if="vm.showError">
+                <div class="denger" ng-message="required">비밀번호 확인을 입력해 주세요.</div>
+                <div ng-message="ng-maxlength">비밀번호 확인은 30자 이내로 입력해 주세요.</div>
+            </div>
+
+            <div ng-messages="vm.inputErrors" role="alert" md-auto-hide="false">
+                <div ng-message="confirmPassword">비밀번호와 비밀번호 확인이 일치하지 않습니다.</div>
+            </div>
+        </md-input-container>
+
+
+
+
+
+
+        <md-input-container class="md-block" md-no-float>
+            <input name="MEM_NAME" type="text" ng-model="vm.user.MEM_NAME" required placeholder="성명">
+            <div ng-messages="userForm.MEM_NAME.$error" ng-if="vm.showError">
+                <div ng-message="required">성명을 입력해 주세요.</div>
+                <div ng-message="ng-maxlength">성명은 50자 이내로 입력해 주세요.</div>
+            </div>
+        </md-input-container>
+
+        <md-input-container class="md-block"  md-no-float>
+            <input name="MEM_TEL" type="text" ng-model="vm.user.MEM_TEL" required="" ng-pattern="/^([0-9]+)$/i" placeholder="전화번호" ng-minlength="9" ng-maxlength="20" >
+            <div ng-messages="userForm.MEM_TEL.$error" ng-if="vm.showError">
+                <div ng-message="required">전화번호를 입력해 주세요.</div>
+                <div ng-message="minlength">전화번호는 9자 이상 입력해 주세요.</div>
+                <div ng-message="pattern">전화번호는 숫자만 입력 가능합니다.</div>
+                <div ng-message="maxlength">전화번호는 20자 이내로 입력해 주세요.</div>
+            </div>
+        </md-input-container>
+    </div>
+    <div layout="row" class="join_btn">
+        <md-button flex="20" class="gray" aria-label="이전" ng-click="vm.cancel()">이전</md-button>
+        <md-button flex aria-label="다음" ng-click="vm.signUp()">다음</md-button>
+    </div>
+<!--</div>-->
+</form>

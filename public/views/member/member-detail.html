@@ -1,0 +1,306 @@
+<div class="container sub">
+    <div class="sub_title_area">
+        <h3>회원관리</h3>
+    </div>
+    <!-- 원화가 -->
+<div class="join_form">
+    <form method="post" name="userForm" id="userForm" class="portfolio">
+        <div class="input_area">
+            <!-- 프로필 사진 -->
+            <div layout="row">
+                <div class="photo" flex="40">
+                    <label class="input_label">프로필 사진(jpg, png 이미지)</label>
+                    <div layout="row" layout-align="start end">
+                        <img ng-hide="vm.picFile" ng-show="vm.user.MEM_IMG" class="" no-cache-src="{{vm.user.MEM_IMG}}" data-ng-src="{{vm.user.MEM_IMG}}">
+                        <md-input-container class="md-block btn_group file-upload ">
+                            <img ng-show="userForm.file.$valid" ngf-thumbnail="vm.picFile" class="">
+                            <div class="blank_btn">
+                                <span>사진첨부</span>
+                                <input aria-label="프로필사진 첨부" type="file" ngf-select ng-model="vm.picFile" name="file"
+                                       class="upload" ngf-model-invalid="errorFile" ng-required="vm.required1">
+                            </div>
+                            <span class="progress" ng-show="vm.picFile.progress >= 0">
+                        <div style="width:{{vm.picFile.progress}}%" ng-bind="vm.picFile.progress + '%'"></div>
+                      </span>
+                            <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+                            <div ng-messages="userForm.file.$error" ng-if="vm.showError" md-auto-hide="false">
+                                <div ng-message="required">프로필 사진을 선택해 주세요.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </div>
+                <div flex></div>
+            </div>
+            <div layout="row">
+                <md-input-container md-no-float flex="40" class="nomal_input">
+                    <label class="label_txt">성명</label>
+                    <input type="text" name="MEM_NAME" ng-model="vm.user.MEM_NAME" required=""
+                           placeholder="성명을 입력하세요" kr-input class="mr10">
+                    <div ng-messages="userForm.MEM_NAME.$error" ng-if="vm.showError">
+                        <div ng-message="required">이메일을 입력해 주세요.</div>
+                    </div>
+                </md-input-container>
+                <span flex></span>
+            </div>
+            <div layout="row">
+                <md-input-container md-no-float flex="40" class="nomal_input">
+                    <label class="label_txt">이메일</label>
+                    <input type="text" name="MEM_EMAIL" ng-model="vm.user.MEM_EMAIL" required=""
+                           placeholder="이메일을 입력하세요" kr-input class="mr10">
+                    <div ng-messages="userForm.MEM_EMAIL.$error" ng-if="vm.showError">
+                        <div ng-message="required">이메일을 입력해 주세요.</div>
+                    </div>
+                </md-input-container>
+                <span flex></span>
+                <md-input-container md-no-float flex="40" class="nomal_input">
+                    <label class="label_txt">전화번호</label>
+                    <input type="text" name="MEM_TEL" ng-model="vm.user.MEM_TEL" required=""
+                           placeholder="전화번호를 입력하세요" kr-input class="mr10">
+                    <div ng-messages="userForm.MEM_TEL.$error" ng-if="vm.showError">
+                        <div ng-message="required">전화번호를 입력해 주세요.</div>
+                    </div>
+                </md-input-container>
+                <span flex></span>
+                <span flex="15"></span>
+            </div>
+            <!-- 코인부분 추가 -->
+            <div layout="row">
+                <div flex="40" class="coin_info">
+                    <label class="label_txt">총 보유코인</label>
+                    <p>{{vm.user.MEM_COINS}}개</p>
+                </div>
+                <span flex></span>
+                <md-input-container md-no-float flex="30" class="nomal_input">
+                    <label class="label_txt">추가코인</label>
+                    <input type="text" name="MEM_COINS_ADD" ng-model="vm.user.MEM_COINS_ADD"
+                           placeholder="추가코인을 입력하세요" kr-input class="mr10">
+                    <div ng-messages="userForm.MEM_COINS_ADD.$error" ng-if="vm.showError">
+                        <div ng-message="required">추가코인을 입력해 주세요.</div>
+                    </div>
+                </md-input-container>
+                <div flex="10" class="coin_add">
+                    <md-button class="md-raised" aria-label="적용" ng-click="vm.addCoins()">적용</md-button>
+                </div>
+                <span flex></span>
+                <span flex="15"></span>
+            </div>
+            <!-- 코인부분 추가 끝 -->
+            <div layout="row">
+                <div flex="40" class="noninput_info">
+                   <!-- <label class="label_txt">직군</label>
+                    <md-input-container class="md-block selectrow" md-no-float>
+                        <md-select ng-model="vm.user.MEM_TYPE" aria-label="직군">
+                            <md-option value="0" selected>전체</md-option>
+                            <md-option ng-repeat="s in vm.member_type" value="{{::s.id}}">{{::s.title}}</md-option>
+                        </md-select>
+                    </md-input-container>-->
+                    <label class="label_txt">직군</label>
+                    <p>{{vm.member_type[vm.user.MEM_TYPE - 1].title}}</p>
+                </div>
+                <span flex></span>
+                <div flex="40">
+                    <label class="label_txt">경력</label>
+                    <md-input-container class="md-block selectrow" md-no-float>
+                        <md-select ng-model="vm.user.MEM_SKILLS" name="MEM_SKILLS" aria-label="개발경력" flex placeholder="경력">
+                            <md-option ng-repeat="s in vm.member_experience" value="{{::s.id}}">{{::s.title}}</md-option>
+                        </md-select>
+                        <div ng-messages="userForm.MEM_SKILLS.$error" ng-if="vm.showError">
+                            <div ng-message="required">경력을 선택해 주세요.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <span flex></span>
+                <span flex="15"></span>
+            </div>
+
+            <div layout="row" layout-align="space-between center">
+                <label class="label_txt">개발 또는 참여한 게임</label>
+                <md-button class="md-raised input_add_btn" type="button" aria-label="추가" ng-click="vm.addDetail()"><img src="img/plus.png" alt=""/></md-button>
+            </div>
+            <!--<md-checkbox ng-model="vm.data.ET_CONSULT_YN" aria-label="없음" ng-true-value="'Y'" ng-false-value="'N'">
+                없음
+            </md-checkbox>-->
+            <!--            <div layout="row" layout-align="start center" class="select n_add" ng-repeat="c in vm.facility.class">-->
+            <div layout="row" layout-align="space-between center" class="select n_add" ng-repeat="d in vm.games">
+                <md-input-container md-no-float flex="20" layout="column">
+                    <md-select name="GME_TYPE" ng-model="d.GME_TYPE" aria-label="참여유형"
+                               placeholder="참여유형">
+                        <!--                        <md-option ng-repeat="d in vm.diets" value="{{::d.CD}}">{{::d.TITLE}}</md-option>-->
+                        <md-option value="1">1인개발</md-option>
+                        <md-option value="2">개발참여</md-option>
+                    </md-select>
+                    <div ng-messages="userForm.GME_TYPE.$error" ng-if="vm.showError">
+                        <div ng-message="required">참여유형을 선택해 주세요.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container md-no-float flex>
+                    <input type="text" name="GME_NAME" ng-model="d.GME_NAME"
+                           placeholder="게임이름을 입력하세요" kr-input class="mr10">
+                    <div ng-messages="userForm.GME_NAME.$error" ng-if="vm.showError">
+                        <div ng-message="required">게임이름을 입력해 주세요.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container ng-show="d.GME_TYPE == '2'" md-no-float flex="45">
+                    <input type="text" name="GME_ROLE" ng-model="d.GME_ROLE"
+                           placeholder="참여영역을 입력하세요" kr-input>
+                    <div ng-messages="userForm.GME_ROLE.$error" ng-if="vm.showError">
+                        <div ng-message="required">참여영역을 입력해 주세요.</div>
+                    </div>
+                </md-input-container>
+                <md-button class="md-raised" type="button" aria-label="삭제" ng-click="vm.removeDetail($event, $index, 1, d.GME_ID)"><img src="img/minus.png" alt=""/></md-button>
+            </div>
+
+
+            <div layout="row" layout-align="space-between center" class="select n_add" ng-repeat="d in vm.user.details">
+                <md-input-container md-no-float flex="20" layout="column">
+                    <md-select name="GME_TYPE" ng-model="d.GME_TYPE" aria-label="참여유형" required=""
+                               placeholder="참여유형">
+                        <!--                        <md-option ng-repeat="d in vm.diets" value="{{::d.CD}}">{{::d.TITLE}}</md-option>-->
+                        <md-option value="1">1인개발</md-option>
+                        <md-option value="2">개발참여</md-option>
+                    </md-select>
+                    <div ng-messages="userForm.GME_TYPE.$error" ng-if="vm.showError">
+                        <div ng-message="required">참여유형을 선택해 주세요.</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container md-no-float flex>
+                    <input type="text" name="GME_NAME" ng-model="d.GME_NAME" required=""
+                           placeholder="게임이름을 입력하세요" kr-input class="mr10">
+                    <div ng-messages="userForm.GME_NAME.$error" ng-if="vm.showError">
+                        <div ng-message="required">게임이름을 입력해 주세요.</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container ng-show="d.GME_TYPE == '2'" md-no-float flex="45">
+                    <input type="text" name="GME_ROLE" ng-model="d.GME_ROLE" required=""
+                           placeholder="참여영역을 입력하세요" kr-input>
+                    <div ng-messages="userForm.GME_ROLE.$error" ng-if="vm.showError">
+                        <div ng-message="required">참여영역을 입력해 주세요.</div>
+                    </div>
+                </md-input-container>
+                <md-button class="md-raised" type="button" aria-label="삭제" ng-click="vm.removeDetail($event, $index, 2, 0)"><img src="img/minus.png" alt=""/></md-button>
+            </div>
+
+        </div>
+
+        <!--<h4>포트폴리오</h4>-->
+
+        <ng-include ng-if="vm.user.MEM_TYPE == '2'" src="'views/signIn/portfolio1.html'"></ng-include> <!-- 개발자 -->
+        <!--<ng-include ng-if="vm.user.MEM_TYPE == '3'" src="'views/signIn/portfolio2.html'"></ng-include> &lt;!&ndash; 원화가 &ndash;&gt;-->
+        <!--<ng-include ng-if="vm.user.MEM_TYPE == '4' || vm.user.MEM_TYPE == '1' || vm.user.MEM_TYPE == '5'" src="'views/signIn/portfolio3.html'"></ng-include> &lt;!&ndash; 작곡가/기획자/작가 &ndash;&gt;-->
+        <ng-include ng-if="vm.user.MEM_TYPE == '6'" src="'views/signIn/portfolio4.html'"></ng-include><!-- 크리에이터-->
+        <ng-include ng-if="vm.user.MEM_TYPE == '7'" src="'views/signIn/portfolio5.html'"></ng-include><!-- 기타-->
+
+        <div ng-if="vm.user.MEM_TYPE == '3'">
+            <div class="input_area photo" layout="column" layout-align="start start">
+                <label class="input_label">포트폴리오 이미지 (최대 10장 / 사이즈 1070 x 1500 / jpg, png 이미지)</label>
+
+                <div class="product_img">
+                    <div ng-repeat="f in vm.files">
+                        <img ng-show="imgForm.file.$valid" ngf-thumbnail="f"
+                             class="">
+                        <span ng-click="vm.picRemove($index, 2, 0)">버튼</span>
+                    </div>
+
+                    <div ng-repeat="ptf in vm.user.ptf">
+                        <img no-cache-src="{{ptf.PRF_FILE}}">
+                        <span ng-click="vm.picRemove($index, 1, ptf.PRF_ID)">버튼</span>
+                    </div>
+                </div>
+
+                <md-input-container class="md-block btn_group file-upload order">
+                    <img ng-hide="vm.picFile2" ng-show="vm.user.PRF_FILE" class=""
+                         no-cache-src="{{vm.user.PRF_FILE}}">
+                    <div class="blank_btn">
+                        <span>이미지 첨부</span>
+                        <input aria-label="사진첨부" type="file" ngf-select="vm.fileSelect($files, $invalidFiles)" ng-model="vm.picFile2"
+                               name="file"
+                               class="upload" multiple
+                               accept="image/*"
+                               ngf-model-invalid="errorFile">
+                    </div><!--ngf-max-size="10MB"-->
+                    <span class="progress" ng-show="vm.picFile2.progress >= 0">
+                        <div style="width:{{vm.picFile2.progress}}%"
+                             ng-bind="vm.picFile2.progress + '%'"></div>
+                      </span>
+                    <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+                    <div ng-messages="imageForm2.file.$error" ng-if="vm.showError">
+                        <div ng-message="required">이미지 파일을 선택해 주세요.</div>
+                    </div>
+                </md-input-container>
+            </div>
+        </div>
+
+        <!--<div class="post_clip" ng-if="vm.user.MEM_TYPE == '4' || vm.user.MEM_TYPE == '1' || vm.user.MEM_TYPE == '5' ">
+            &lt;!&ndash;<b> 첨부파일 목록</b>&ndash;&gt;
+            <ul>
+                <li ng-repeat="f in vm.user.ptf">
+                    <a ng-href="/download/{{f.PRF_ID}}">{{f.PRF_FILE_NM}}</a>
+                    <a ng-click="vm.fnFileDelete($event, $index, f)" class="del">X</a>
+                </li>
+            </ul>
+        </div>-->
+
+
+        <div>
+            <div class="input_area photo" layout="column" layout-align="start start" ng-if="vm.user.MEM_TYPE == '4' || vm.user.MEM_TYPE == '1' || vm.user.MEM_TYPE == '5' ">
+                <label ng-if="vm.user.MEM_TYPE == '4'" class="input_label">포트폴리오 음원파일(.mp3 형식)</label>
+                <label ng-if="vm.user.MEM_TYPE == '5'" class="input_label">프롤로그 또는 시놉시스 파일(.pdf 형식)</label>
+                <label ng-if="vm.user.MEM_TYPE == '1'" class="input_label">본인 포트폴리오 업로드(.pdf 형식)</label>
+
+                <div class="post_input" layout="row">
+                    <button ng-if="vm.user.MEM_TYPE == '4'" ngf-select="vm.fileSelect($files, $invalidFiles)" multiple accept="audio/*"
+                            class="md-raised input_add_btn">
+                        <img src="img/plus.png" alt=""/>
+                    </button>
+                    <button ng-if="vm.user.MEM_TYPE != '4'" ngf-select="vm.fileSelect($files, $invalidFiles)" multiple accept="application/pdf"
+                            class="md-raised input_add_btn">
+                        <img src="img/plus.png" alt=""/>
+                    </button>
+                </div>
+
+                <div flex class="clip_list">
+                    <ul class="post_clip">
+                        <li ng-repeat="f in vm.user.ptf">
+                            <a ng-href="/download/{{f.PRF_ID}}">{{f.PRF_FILE_NM}}</a>
+                            <a ng-click="vm.picRemove($index, 1, f.PRF_ID)" class="md-raised input_add_btn del"><img src="img/minus.png" alt=""/></a>
+                        </li>
+                    </ul>
+
+                    <ul class="post_clip">
+                        <li ng-repeat="f in vm.files" layout="row">
+                            <span>{{f.name}} {{f.$errorParam}}</span>
+                            <span class="progress" ng-show="f.progress >= 0">
+                                <div style="width:{{f.progress}}%" ng-bind="f.progress + '%'"></div>
+                            </span>
+                            <a ng-href="/download/{{f.id}}">{{f.org_file_name}}</a><a
+                                ng-click="vm.picRemove($index, 2, 0)" class="md-raised input_add_btn del"><img src="img/minus.png" alt=""/></a>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="post_clip" ng-if="vm.errFiles.length > 0">
+                    <b>유효하지 않은 파일</b>
+                    <ul>
+                        <li ng-repeat="f in vm.errFiles">{{f.name}} {{f.$error}} {{f.$errorParam}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+    </form>
+    <div layout="row" class="join_btn">
+        <md-button flex="20" class="gray" aria-label="취소" ng-click="vm.cancel()">취소</md-button>
+        <md-button flex aria-label="완료" ng-click="vm.update()">저장</md-button>
+    </div>
+
+</div>
+
+</div>

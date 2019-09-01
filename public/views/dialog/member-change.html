@@ -1,0 +1,37 @@
+
+<!-- 구성원 변경 -->
+<form method="post" name="userForm" id="userForm">
+    <md-dialog style="width:450px;" class="popup">
+        <md-toolbar>
+            <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+                <h2 class="pop_title">구성원 변경</h2>
+                <md-button aria-label="닫기" ng-click="vm.cancel()"><img src="/img/popup/close.png"/></md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content layout="column">
+            <md-list class="team">
+                <md-list-item class="md-2-line secondary-button-padding" ng-repeat="member in vm.user" ng-click="vm.changeMember(member.MEM_ID, member.PRO_ID)" >
+                    <div class="md-list-item-text">
+                        <h3>{{member.MEM_NAME}}</h3>
+                        <p>{{member.MEM_TEL}}</p>
+                        <md-button class="md-secondary" ng-click="vm.getProfile(member.MEM_ID)">프로필정보</md-button>
+                    </div>
+                </md-list-item>
+                <!--<md-list-item class="md-2-line" ng-click="">
+                    <div class="md-list-item-text">
+                        <h3>김성혁</h3>
+                        <p>01051222521</p>
+                        <md-button class="md-secondary" ng-click="">프로필정보</md-button>
+                    </div>
+                </md-list-item>
+                <md-list-item class="md-2-line" ng-click="">
+                    <div class="md-list-item-text">
+                        <h3>송형선</h3>
+                        <p>01079245411</p>
+                        <md-button class="md-secondary" ng-click="">프로필정보</md-button>
+                    </div>
+                </md-list-item>-->
+            </md-list>
+        </md-dialog-content>
+    </md-dialog>
+</form>

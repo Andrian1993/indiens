@@ -1,0 +1,139 @@
+<div class="container sub">
+    <div class="sub_title_area">
+        <h3>인디언즈에서 개발중인 프로젝트</h3>
+        <div class="search">
+            <input type="text" ng-model="vm.search.PJT_NAME" placeholder="프로젝트 검색" >
+            <md-button aria-label="검색" class="search_icon" ng-click="vm.fnSearch()">검색</md-button>
+        </div>
+    </div>
+    <div class="list_btn">
+        <md-button aria-label="프로젝트 등록" ng-click="vm.save()" ng-if="$root.currentUser">프로젝트 등록</md-button>
+    </div>
+    <div class="project_list">
+        <md-content>
+            <md-card ng-repeat="project in vm.projects" ng-click="vm.update(project.PJT_ID)">
+                <img ng-if="project.PJT_LOGO" ng-src="{{project.PJT_LOGO}}" class="md-card-image" alt=""/>
+                <img ng-if="!project.PJT_LOGO" src="../../img/ex/ex_photo.png" class="md-card-image" alt="project"/>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">{{project.PJT_NAME}}</span>
+                        <span>{{project.PJT_DESC}}</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+            <!--<md-card>
+                &lt;!&ndash;<img   src="/img/main/ptoject_photo1.png" class="md-card-image" alt="project"/>&ndash;&gt;
+                <img ng-src="{{project.PJT_LOGO}}" class="md-card-image" alt="project"/>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">{{project.PJT_NAME}}</span>
+                        <span>Legion of Dawn 에디션 패키지</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+            <md-card>
+                <img src="/img/main/ptoject_photo2.png" class="md-card-image" alt="project"/>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Anthem™ Legion of Dawn 에디션 Anthem™</span>
+                        <span>Legion of Dawn 에디션 패키지</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+            <md-card>
+                <img src="/img/main/ptoject_photo3.png" class="md-card-image" alt="project"/>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Anthem™ Legion of Dawn 에디션 Anthem™</span>
+                        <span>Legion of Dawn 에디션 패키지</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+            <md-card>
+                <img src="/img/main/ptoject_photo1.png" class="md-card-image" alt="project"/>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Anthem™ Legion of Dawn 에디션 Anthem™</span>
+                        <span>Legion of Dawn 에디션 패키지</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+            <md-card>
+                <img src="/img/main/ptoject_photo2.png" class="md-card-image" alt="project"/>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Anthem™ Legion of Dawn 에디션 Anthem™</span>
+                        <span>Legion of Dawn 에디션 패키지</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+            <md-card>
+                <img src="/img/main/ptoject_photo3.png" class="md-card-image" alt="project"/>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Anthem™ Legion of Dawn 에디션 Anthem™</span>
+                        <span>Legion of Dawn 에디션 패키지</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+            <md-card>
+                <img src="/img/main/ptoject_photo1.png" class="md-card-image" alt="project"/>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Anthem™ Legion of Dawn 에디션 Anthem™</span>
+                        <span>Legion of Dawn 에디션 패키지</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+            <md-card>
+                <img src="/img/main/ptoject_photo2.png" class="md-card-image" alt="project"/>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Anthem™ Legion of Dawn 에디션 Anthem™</span>
+                        <span>Legion of Dawn 에디션 패키지</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+            <md-card>
+                <img src="/img/main/ptoject_photo3.png" class="md-card-image" alt="project"/>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Anthem™ Legion of Dawn 에디션 Anthem™</span>
+                        <span>Legion of Dawn 에디션 패키지</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+            <md-card>
+                <img src="/img/main/ptoject_photo1.png" class="md-card-image" alt="project"/>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Anthem™ Legion of Dawn 에디션 Anthem™</span>
+                        <span>Legion of Dawn 에디션 패키지</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+            <md-card>
+                <img src="/img/main/ptoject_photo2.png" class="md-card-image" alt="project"/>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Anthem™ Legion of Dawn 에디션 Anthem™</span>
+                        <span>Legion of Dawn 에디션 패키지</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+            <md-card>
+                <img src="/img/main/ptoject_photo3.png" class="md-card-image" alt="project"/>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Anthem™ Legion of Dawn 에디션 Anthem™</span>
+                        <span>Legion of Dawn 에디션 패키지</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>-->
+        </md-content>
+
+        <ng-include src="'views/sub/paging.html'"></ng-include>
+    </div>
+
+</div>
+

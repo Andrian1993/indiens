@@ -1,0 +1,15 @@
+<section layout="row" layout-align="center center">
+    <md-button class="groupX left" ui-sref="Profile.notes">받은 쪽지</md-button>
+    <md-button class="groupX right on">보낸 쪽지</md-button>
+</section>
+<div class="board">
+    <div id="client-grid1" ui-grid="vm.gridOptions" ui-grid-selection="" class="grid">
+        <div class="no-rows" ng-show="!vm.gridOptions.data.length">
+            <div class="msg">
+                <span>검색 결과가 없습니다.</span>
+            </div>
+        </div>
+    </div>
+    <ng-include src="'views/sub/paging.html'"></ng-include>
+</div>
+
